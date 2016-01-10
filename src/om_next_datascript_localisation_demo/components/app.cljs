@@ -35,7 +35,7 @@
       (log "-----------------------------")
       (log "App render:" props)
       (set-html-lang code)
-      (set-html-title (:app-title strings))
+      (set-html-title (:app/title strings))
       (html [:div
 
               (localised-string
