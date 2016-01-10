@@ -29,11 +29,11 @@ cp -R "$tmpdir"/* .
 commit=$(git log -n1 --format="%H" master)
 
 # Create a new commit from the new sources
-git add .
-git commit -a -m "Update to $commit"
+#git add .
+#git commit -a -m "Update to $commit"
 
 # Push gh-pages to GitHub
-git push origin gh-pages
+#git push origin gh-pages
 
 # Switch back to master
 #git checkout master
