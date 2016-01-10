@@ -32,7 +32,7 @@ git add .
 git commit -a -m "Update to $commit"
 
 # Push gh-pages to GitHub
-git push origin gh-pages:gh-pages
+git push origin gh-pages
 
 # Switch back to master
 git checkout master
