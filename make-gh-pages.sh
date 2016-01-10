@@ -1,15 +1,16 @@
 #!/bin/bash
 
-# Create temporary directory
+# make sure the compiled files exist
+lein cljsbuild once
 
+# Create temporary directory
 tmpdir=$(mktemp -d)
-#echo $tmpdir
+echo $tmpdir
 
 mkdir ${tmpdir}/css
 mkdir -p ${tmpdir}/compiled/min
 
 # Copy the latest build to it
-
 cp resources/public/*.html "$tmpdir"
 cp resources/public/css/* "$tmpdir"/css
 cp resources/public/compiled/min/om_next_datascript_localisation_demo.js "$tmpdir"/compiled/min/om_next_datascript_localisation_demo.js
@@ -22,7 +23,7 @@ git rm -rf *.html css compiled
 
 # Copy the build into it
 cp -R "$tmpdir"/* .
-rm -rf "$tmpdir"
+#rm -rf "$tmpdir"
 
 # Determine the latest commit in master
 commit=$(git log -n1 --format="%H" master)
@@ -35,4 +36,4 @@ git commit -a -m "Update to $commit"
 git push origin gh-pages
 
 # Switch back to master
-git checkout master
+#git checkout master
