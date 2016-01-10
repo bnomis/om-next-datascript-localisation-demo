@@ -18,7 +18,7 @@ cp resources/public/compiled/min/om_next_datascript_localisation_demo.js "$tmpdi
 git checkout gh-pages
 
 # Remove the old sources
-git rm -rf *
+git rm -rf *.html css compiled
 
 # Copy the build into it
 cp -R "$tmpdir"/* .
