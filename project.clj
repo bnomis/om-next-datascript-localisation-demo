@@ -27,7 +27,7 @@
 
                 :figwheel {:on-jsload "om-next-datascript-localisation-demo.core/on-js-reload"}
 
-                :compiler {:main "om-next-datascript-localisation-demo.core"
+                :compiler {:main om-next-datascript-localisation-demo.core
                            :asset-path "js"
                            :output-to "resources/public/js/om_next_datascript_localisation_demo.js"
                            :output-dir "resources/public/js"
