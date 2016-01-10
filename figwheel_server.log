@@ -1,0 +1,121 @@
+[0mCompiling "resources/public/js/om_next_datascript_localisation_demo.js" from ["src"]...
+Compiling src/om_next_datascript_localisation_demo/components/locale/selector.cljs
+Compiling src/om_next_datascript_localisation_demo/components/app.cljs
+Compiling src/om_next_datascript_localisation_demo/core.cljs
+Compiling target/figwheel_temp/dev/figwheel/connect.cljs
+notifying browser that file changed:  resources/public/js/goog/deps.js
+notifying browser that file changed:  resources/public/js/cljs_deps.js
+notifying browser that file changed:  out/om_next_datascript_localisation_demo/components/locale/selector.js
+[32mSuccessfully compiled "resources/public/js/om_next_datascript_localisation_demo.js" in 1.1 seconds.[0m
+[0mCompiling "resources/public/js/om_next_datascript_localisation_demo.js" from ["src"]...
+Compiling src/om_next_datascript_localisation_demo/components/locale/selector.cljs
+Compiling src/om_next_datascript_localisation_demo/components/app.cljs
+Compiling src/om_next_datascript_localisation_demo/core.cljs
+Compiling target/figwheel_temp/dev/figwheel/connect.cljs
+notifying browser that file changed:  out/om_next_datascript_localisation_demo/components/locale/selector.js
+[32mSuccessfully compiled "resources/public/js/om_next_datascript_localisation_demo.js" in 0.705 seconds.[0m
+[0mCompiling "resources/public/js/om_next_datascript_localisation_demo.js" from ["src"]...
+Compiling /Users/simonb/src/clojurescript/om/om-next-datascript-localisation-demo/src/om_next_datascript_localisation_demo/components/locale/strings.cljs
+Compiling src/om_next_datascript_localisation_demo/components/app.cljs
+Compiling src/om_next_datascript_localisation_demo/core.cljs
+Compiling target/figwheel_temp/dev/figwheel/connect.cljs
+notifying browser that file changed:  out/om_next_datascript_localisation_demo/components/locale/strings.js
+[32mSuccessfully compiled "resources/public/js/om_next_datascript_localisation_demo.js" in 1.076 seconds.[0m
+[0mCompiling "resources/public/js/om_next_datascript_localisation_demo.js" from ["src"]...
+Compiling /Users/simonb/src/clojurescript/om/om-next-datascript-localisation-demo/src/om_next_datascript_localisation_demo/components/locale/strings.cljs
+Compiling src/om_next_datascript_localisation_demo/components/app.cljs
+Compiling src/om_next_datascript_localisation_demo/core.cljs
+Compiling target/figwheel_temp/dev/figwheel/connect.cljs
+notifying browser that file changed:  out/om_next_datascript_localisation_demo/components/locale/strings.js
+[32mSuccessfully compiled "resources/public/js/om_next_datascript_localisation_demo.js" in 0.726 seconds.[0m
+[0mCompiling "resources/public/js/om_next_datascript_localisation_demo.js" from ["src"]...
+Compiling /Users/simonb/src/clojurescript/om/om-next-datascript-localisation-demo/src/om_next_datascript_localisation_demo/components/locale/table.cljs
+Compiling src/om_next_datascript_localisation_demo/components/app.cljs
+Compiling src/om_next_datascript_localisation_demo/core.cljs
+Compiling target/figwheel_temp/dev/figwheel/connect.cljs
+notifying browser that file changed:  out/om_next_datascript_localisation_demo/components/locale/table.js
+[32mSuccessfully compiled "resources/public/js/om_next_datascript_localisation_demo.js" in 0.709 seconds.[0m
+[0mCompiling "resources/public/js/om_next_datascript_localisation_demo.js" from ["src"]...
+Compiling /Users/simonb/src/clojurescript/om/om-next-datascript-localisation-demo/src/om_next_datascript_localisation_demo/datascript/db.cljs
+Compiling /Users/simonb/src/clojurescript/om/om-next-datascript-localisation-demo/src/om_next_datascript_localisation_demo/datascript/parser.cljs
+Compiling src/om_next_datascript_localisation_demo/core.cljs
+Compiling target/figwheel_temp/dev/figwheel/connect.cljs
+notifying browser that file changed:  out/om_next_datascript_localisation_demo/datascript/db.js
+[32mSuccessfully compiled "resources/public/js/om_next_datascript_localisation_demo.js" in 1.358 seconds.[0m
+[0mCompiling "resources/public/js/om_next_datascript_localisation_demo.js" from ["src"]...
+Compiling /Users/simonb/src/clojurescript/om/om-next-datascript-localisation-demo/src/om_next_datascript_localisation_demo/datascript/db.cljs
+Compiling /Users/simonb/src/clojurescript/om/om-next-datascript-localisation-demo/src/om_next_datascript_localisation_demo/datascript/parser.cljs
+Compiling src/om_next_datascript_localisation_demo/core.cljs
+Compiling target/figwheel_temp/dev/figwheel/connect.cljs
+notifying browser that file changed:  out/om_next_datascript_localisation_demo/datascript/db.js
+[32mSuccessfully compiled "resources/public/js/om_next_datascript_localisation_demo.js" in 1.223 seconds.[0m
+[0mCompiling "resources/public/js/om_next_datascript_localisation_demo.js" from ["src"]...
+Compiling /Users/simonb/src/clojurescript/om/om-next-datascript-localisation-demo/src/om_next_datascript_localisation_demo/datascript/db.cljs
+Compiling /Users/simonb/src/clojurescript/om/om-next-datascript-localisation-demo/src/om_next_datascript_localisation_demo/datascript/parser.cljs
+Compiling src/om_next_datascript_localisation_demo/core.cljs
+Compiling target/figwheel_temp/dev/figwheel/connect.cljs
+notifying browser that file changed:  out/om_next_datascript_localisation_demo/datascript/db.js
+[32mSuccessfully compiled "resources/public/js/om_next_datascript_localisation_demo.js" in 1.908 seconds.[0m
+[0mCompiling "resources/public/js/om_next_datascript_localisation_demo.js" from ["src"]...
+Compiling /Users/simonb/src/clojurescript/om/om-next-datascript-localisation-demo/src/om_next_datascript_localisation_demo/datascript/db.cljs
+Compiling /Users/simonb/src/clojurescript/om/om-next-datascript-localisation-demo/src/om_next_datascript_localisation_demo/datascript/parser.cljs
+Compiling src/om_next_datascript_localisation_demo/core.cljs
+Compiling target/figwheel_temp/dev/figwheel/connect.cljs
+notifying browser that file changed:  out/om_next_datascript_localisation_demo/datascript/db.js
+[32mSuccessfully compiled "resources/public/js/om_next_datascript_localisation_demo.js" in 1.283 seconds.[0m
+[0mCompiling "resources/public/js/om_next_datascript_localisation_demo.js" from ["src"]...
+Compiling /Users/simonb/src/clojurescript/om/om-next-datascript-localisation-demo/src/om_next_datascript_localisation_demo/datascript/db.cljs
+Compiling /Users/simonb/src/clojurescript/om/om-next-datascript-localisation-demo/src/om_next_datascript_localisation_demo/datascript/parser.cljs
+Compiling src/om_next_datascript_localisation_demo/core.cljs
+Compiling target/figwheel_temp/dev/figwheel/connect.cljs
+notifying browser that file changed:  resources/public/js/cljs_deps.js
+notifying browser that file changed:  out/om_next_datascript_localisation_demo/datascript/db.js
+[32mSuccessfully compiled "resources/public/js/om_next_datascript_localisation_demo.js" in 1.226 seconds.[0m
+[0mCompiling "resources/public/js/om_next_datascript_localisation_demo.js" from ["src"]...
+Compiling /Users/simonb/src/clojurescript/om/om-next-datascript-localisation-demo/src/om_next_datascript_localisation_demo/datascript/db.cljs
+Compiling /Users/simonb/src/clojurescript/om/om-next-datascript-localisation-demo/src/om_next_datascript_localisation_demo/datascript/parser.cljs
+Compiling src/om_next_datascript_localisation_demo/core.cljs
+Compiling target/figwheel_temp/dev/figwheel/connect.cljs
+notifying browser that file changed:  out/om_next_datascript_localisation_demo/datascript/db.js
+[32mSuccessfully compiled "resources/public/js/om_next_datascript_localisation_demo.js" in 1.11 seconds.[0m
+[0mCompiling "resources/public/js/om_next_datascript_localisation_demo.js" from ["src"]...
+Compiling /Users/simonb/src/clojurescript/om/om-next-datascript-localisation-demo/src/om_next_datascript_localisation_demo/datascript/parser.cljs
+Compiling src/om_next_datascript_localisation_demo/core.cljs
+Compiling target/figwheel_temp/dev/figwheel/connect.cljs
+notifying browser that file changed:  out/om_next_datascript_localisation_demo/datascript/parser.js
+[32mSuccessfully compiled "resources/public/js/om_next_datascript_localisation_demo.js" in 0.813 seconds.[0m
+[0mCompiling "resources/public/js/om_next_datascript_localisation_demo.js" from ["src"]...
+Compiling /Users/simonb/src/clojurescript/om/om-next-datascript-localisation-demo/src/om_next_datascript_localisation_demo/datascript/parser.cljs
+Compiling src/om_next_datascript_localisation_demo/core.cljs
+Compiling target/figwheel_temp/dev/figwheel/connect.cljs
+notifying browser that file changed:  out/om_next_datascript_localisation_demo/datascript/parser.js
+[32mSuccessfully compiled "resources/public/js/om_next_datascript_localisation_demo.js" in 0.829 seconds.[0m
+[0mCompiling "resources/public/js/om_next_datascript_localisation_demo.js" from ["src"]...
+Compiling /Users/simonb/src/clojurescript/om/om-next-datascript-localisation-demo/src/om_next_datascript_localisation_demo/datascript/parser.cljs
+Compiling src/om_next_datascript_localisation_demo/core.cljs
+Compiling target/figwheel_temp/dev/figwheel/connect.cljs
+notifying browser that file changed:  out/om_next_datascript_localisation_demo/datascript/parser.js
+[32mSuccessfully compiled "resources/public/js/om_next_datascript_localisation_demo.js" in 0.823 seconds.[0m
+[0mCompiling "resources/public/js/om_next_datascript_localisation_demo.js" from ["src"]...
+Compiling /Users/simonb/src/clojurescript/om/om-next-datascript-localisation-demo/src/om_next_datascript_localisation_demo/utils/ident.cljs
+Compiling /Users/simonb/src/clojurescript/om/om-next-datascript-localisation-demo/src/om_next_datascript_localisation_demo/datascript/parser.cljs
+Compiling src/om_next_datascript_localisation_demo/components/locale/localised-string.cljs
+Compiling src/om_next_datascript_localisation_demo/components/app.cljs
+Compiling src/om_next_datascript_localisation_demo/core.cljs
+Compiling target/figwheel_temp/dev/figwheel/connect.cljs
+notifying browser that file changed:  out/om_next_datascript_localisation_demo/utils/ident.js
+[32mSuccessfully compiled "resources/public/js/om_next_datascript_localisation_demo.js" in 1.07 seconds.[0m
+[0mCompiling "resources/public/js/om_next_datascript_localisation_demo.js" from ["src"]...
+Compiling /Users/simonb/src/clojurescript/om/om-next-datascript-localisation-demo/src/om_next_datascript_localisation_demo/components/locale/table.cljs
+Compiling src/om_next_datascript_localisation_demo/components/app.cljs
+Compiling src/om_next_datascript_localisation_demo/core.cljs
+Compiling target/figwheel_temp/dev/figwheel/connect.cljs
+notifying browser that file changed:  out/om_next_datascript_localisation_demo/components/locale/table.js
+[32mSuccessfully compiled "resources/public/js/om_next_datascript_localisation_demo.js" in 0.84 seconds.[0m
+[0mCompiling "resources/public/js/om_next_datascript_localisation_demo.js" from ["src"]...
+Compiling /Users/simonb/src/clojurescript/om/om-next-datascript-localisation-demo/src/om_next_datascript_localisation_demo/datascript/db.cljs
+Compiling /Users/simonb/src/clojurescript/om/om-next-datascript-localisation-demo/src/om_next_datascript_localisation_demo/datascript/parser.cljs
+Compiling src/om_next_datascript_localisation_demo/core.cljs
+Compiling target/figwheel_temp/dev/figwheel/connect.cljs
+notifying browser that file changed:  out/om_next_datascript_localisation_demo/datascript/db.js
+[32mSuccessfully compiled "resources/public/js/om_next_datascript_localisation_demo.js" in 1.162 seconds.[0m
