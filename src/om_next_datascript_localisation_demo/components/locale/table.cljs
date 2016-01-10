@@ -23,9 +23,7 @@
 
 (defn get-locales-locale [locales id]
   (let [ll (find-locales-locale locales id)]
-    (if ll
-      ll
-      (empty-locale id))))
+    (or ll (empty-locale id))))
 
 (defn find-locales [locales order]
   (if (or (empty? locales) (not locales))
@@ -122,7 +120,7 @@
       (loop [new-checkboxes {}
               l (first locales)
               locales (rest locales)]
-        (if (not l)
+        (if-not l
           (om/set-state! this {:checkboxes new-checkboxes})
           (recur (add-checkbox-state new-checkboxes old-checkboxes l) (first locales) (rest locales))))))
 

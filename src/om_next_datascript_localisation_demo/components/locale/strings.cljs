@@ -22,9 +22,7 @@
 
 (defn get-localised [localised id]
   (let [ll (find-localised localised id)]
-    (if ll
-      ll
-      (make-localised-placeholder id))))
+    (or ll (make-localised-placeholder id))))
 
 (defn order-localised [localised order]
   (if (or (empty? localised) (not localised))
@@ -126,7 +124,7 @@
       (loop [new-checkboxes {}
               l (first locales)
               locales (rest locales)]
-        (if (not l)
+        (if-not l
           (om/set-state! this {:checkboxes new-checkboxes})
           (recur (add-checkbox-state new-checkboxes old-checkboxes l) (first locales) (rest locales))))))
 

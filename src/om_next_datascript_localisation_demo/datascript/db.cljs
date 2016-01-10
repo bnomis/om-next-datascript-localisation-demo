@@ -6,7 +6,8 @@
     [om-next-datascript-localisation-demo.datascript.schema :refer [schema]]
     [om-next-datascript-localisation-demo.datascript.initial :refer [initial-data]]
     [om-next-datascript-localisation-demo.logging :refer-macros [log log-read log-mutate]]
-    [clojure.set :refer [difference]]))
+    [clojure.set :refer [difference]]
+    [clojure.string :as str]))
 
 (defn init-db []
   ;; make database with the schema
@@ -60,7 +61,7 @@
       @db))
 
 (defn locale-refs [db]
-  (mapv (fn [id] [:db/id id]) (locale-ids db)))
+  (mapv :db/id (locale-ids db)))
 
 (defn read-locales
   ([db] (read-locales db '[*]))
@@ -332,8 +333,7 @@
   (log "!!!add-db-id-param-to-query: query" query)
   (log "!!!add-db-id-param-to-query: id" id)
   (if (vector? query)
-    (if (empty? query)
-      nil
+    (when (seq query)
       (if (every? keyword? query)
         [(list query {:db/id id})]
         (mapv #(add-db-id-param-to-query % id) query)))
@@ -347,13 +347,12 @@
           results {}]
     (if-not q
       results
-      (do
-        (let [k (key (first q))
-              v (val (first q))
-              val (cond
-                    (= k :locale.locale) (db-pull db id v)
-                    :else nil)]
-          (recur (first query) (rest query) (assoc results k val)))))))
+      (let [k (key (first q))
+            v (val (first q))
+            val (cond
+                  (= k :locale.locale) (db-pull db id v)
+                  :else nil)]
+        (recur (first query) (rest query) (assoc results k val))))))
 
 (defn read-locale-locales [db id query]
   (let [locale-locales (d/q '[:find [?locale-locale ...]
@@ -373,15 +372,14 @@
           results {}]
     (if-not q
       results
-      (do
-        (let [k (key (first q))
-              v (val (first q))
-              val (cond
-                    (= k :locale) (db-pull db id v)
-                    (= k :locale.locales) (read-locale-locales db id v)
-                    (= k :editable.locale.locales) (read-locale-locales db id v)
-                    :else nil)]
-          (recur (first query) (rest query) (assoc results k val)))))))
+      (let [k (key (first q))
+            v (val (first q))
+            val (cond
+                  (= k :locale) (db-pull db id v)
+                  (= k :locale.locales) (read-locale-locales db id v)
+                  (= k :editable.locale.locales) (read-locale-locales db id v)
+                  :else nil)]
+        (recur (first query) (rest query) (assoc results k val))))))
 
 
 (defn id-in-list [list id]
@@ -422,7 +420,7 @@
     (loop [chars []
             length length]
       (if (= 0 length)
-        (apply str chars)
+        (str/join chars)
         (recur (conj chars (get alpha (rand-int alpha-len))) (dec length))))))
 
 

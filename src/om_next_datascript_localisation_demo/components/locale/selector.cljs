@@ -21,8 +21,7 @@
 (defn find-locale-name-in-locale [locale id]
   (let [localised (localised-for-locale (:localised locale) id)]
     (if localised
-      (do
-        (:value localised))
+      (:value localised)
       (:value locale))))
 
 (defui LocaleSelectorLink
@@ -66,7 +65,7 @@
           app-locale (get-in props [:app.locale :db/id])
           locales (filter-locales locales app-locale)]
       (log "LocaleSelector: render: props " props)
-      (when-not (empty? locales)
+      (when (seq locales)
         (html
           [:div
             [:p "Choose a different locale:"]

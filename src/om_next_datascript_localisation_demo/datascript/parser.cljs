@@ -242,7 +242,7 @@
   (let [db (:state env)
         ids (:ids params)
         tx (mapv (fn [id] [:db.fn/retractEntity id]) ids)]
-    { :action (fn [] (d/transact! db (conj tx)))}))
+    { :action (fn [] (d/transact! db tx))}))
 
 
 
