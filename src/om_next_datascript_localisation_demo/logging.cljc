@@ -1,6 +1,6 @@
 (ns om-next-datascript-localisation-demo.logging)
 
-(def logging-is-on true)
+(def logging-is-on false)
 
 (defmacro log [& args]
   `(when logging-is-on
