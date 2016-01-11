@@ -7,7 +7,7 @@
     [om-next-datascript-localisation-demo.components.app :refer [App]]
     [om-next-datascript-localisation-demo.logging :refer-macros [log]]))
 
-(enable-console-print!)
+;;(enable-console-print!)
 
 (defn on-js-reload [])
 
@@ -15,8 +15,6 @@
   (om/reconciler
     {:state the-db
      :parser parser}))
-
-
 
 (om/add-root! reconciler App (gdom/getElement "app"))
 

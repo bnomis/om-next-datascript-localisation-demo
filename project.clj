@@ -22,25 +22,26 @@
   :clean-targets ^{:protect false} ["resources/public/compiled" "target"]
 
   :cljsbuild {:builds
+
               [{:id "dev"
                 :source-paths ["src"]
-
-                :figwheel {:on-jsload "om-next-datascript-localisation-demo.core/on-js-reload"}
-
                 :compiler {:main om-next-datascript-localisation-demo.core
-                           :asset-path "compiled/dev"
                            :output-to  "resources/public/compiled/dev/om_next_datascript_localisation_demo.js"
                            :output-dir "resources/public/compiled/dev"
+                           :asset-path "compiled/dev"
                            :source-map-timestamp true
-                           :verbose true}}
+                           :verbose true
+                           :parallel-build true}
+                :figwheel {:on-jsload "om-next-datascript-localisation-demo.core/on-js-reload"}}
 
                {:id "min"
                 :source-paths ["src"]
-                :compiler { :output-to  "resources/public/compiled/min/om_next_datascript_localisation_demo.js"
+                :compiler { :main om-next-datascript-localisation-demo.core
+                            :output-to  "resources/public/compiled/min/om_next_datascript_localisation_demo.js"
                             :output-dir "resources/public/compiled/min"
                             :asset-path "compiled/min"
-                            :main om-next-datascript-localisation-demo.core
                             :optimizations :advanced
-                            :pretty-print false}}]}
+                            :pretty-print false
+                            :parallel-build true}}]}
 
   :figwheel {:css-dirs ["resources/public/css"]})
