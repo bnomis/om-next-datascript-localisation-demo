@@ -1,4 +1,9 @@
 #!/bin/bash
+# this script makes the app, copies the app files to a temporary directory,
+# switches to the gh-pages branch, deletes old files, copies the new files, deletes the temporary directory
+# checks in new files, pushes the commit
+# switches back to the master branch
+# it is lifted from https://github.com/Jannis/om-next-kanban-demo/
 
 # make sure the compiled files exist
 lein cljsbuild once
