@@ -51,4 +51,5 @@
                               :output-dir "resources/public/compiled/test"
                               :main om-next-datascript-localisation-demo.runner
                               :optimizations :none
+                              :parallel-build true
                               :target :nodejs}}]})
