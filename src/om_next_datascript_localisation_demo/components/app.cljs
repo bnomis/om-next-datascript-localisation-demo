@@ -10,6 +10,11 @@
     [om-next-datascript-localisation-demo.components.locale.localised-string :refer [localised-string editable-localised-string]]
     [om-next-datascript-localisation-demo.utils.html :refer [set-html-lang set-html-title]]))
 
+
+(defn render-string [factory props]
+  (factory
+    (om/computed (:query-props props) (:computed-props props))))
+
 (defui App
   static om/IQuery
   (query [this]
@@ -30,53 +35,28 @@
           strings (get-in props [:app.localised/strings])
           locales-selector-props (get-in props [:locales-selector-props])
           locales-table-props (get-in props [:locales-table-props])
-          localised-string-table-props (get-in props [:localised-string-table-props])]
+          localised-string-table-props (get-in props [:localised-string-table-props])
+          string-props [{:query-props {:localised/string {:localised-value (:app/title strings)}}
+                          :computed-props { :tag :h2
+                                            :string-id :app/title
+                                            :locale-id app-locale-id}}
+                        {:query-props {:localised/string {:localised-value (:app/desc strings)}}
+                          :computed-props { :tag :p
+                                            :string-id :app/desc
+                                            :locale-id app-locale-id}}
+                        {:query-props {:localised/string {:localised-value (:app/missing strings)}}
+                          :computed-props { :tag :p
+                                            :string-id :app/missing
+                                            :locale-id app-locale-id}}]]
 
       (log "-----------------------------")
       (log "App render:" props)
       (set-html-lang code)
       (set-html-title (:app/title strings))
       (html [:div
-
-              (localised-string
-                (om/computed
-                  {:localised/string {:localised-value (:app/title strings)}}
-                  { :render-fn (fn [s] (html [:h2 s]))
-                    :string-id :app/title
-                    :locale-id app-locale-id}))
-              (localised-string
-                (om/computed
-                  {:localised/string {:localised-value (:app/desc strings)}}
-                  { :render-fn (fn [s] (html [:p s]))
-                    :string-id :app/desc
-                    :locale-id app-locale-id}))
-              (localised-string
-                (om/computed
-                  {:localised/string {:localised-value (:app/missing strings)}}
-                  { :render-fn (fn [s] (html [:p s]))
-                    :string-id :app/missing
-                    :locale-id app-locale-id}))
-
-
-              (editable-localised-string
-                (om/computed
-                  {:localised/string {:localised-value (:app/title strings)}}
-                  { :tag :h2
-                    :string-id :app/title
-                    :locale-id app-locale-id}))
-              (editable-localised-string
-                (om/computed
-                  {:localised/string {:localised-value (:app/desc strings)}}
-                  { :tag :p
-                    :string-id :app/desc
-                    :locale-id app-locale-id}))
-              (editable-localised-string
-                (om/computed
-                  {:localised/string {:localised-value (:app/missing strings)}}
-                  { :tag :p
-                    :string-id :app/missing
-                    :locale-id app-locale-id}))
-
+              (map #(render-string localised-string %) string-props)
+              (map #(render-string editable-localised-string %) string-props)
+              
               (if code
                 [:p (:app/current-locale strings) ": " localised]
                 [:p "No app locale is set"])

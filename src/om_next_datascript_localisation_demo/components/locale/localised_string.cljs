@@ -10,6 +10,11 @@
   (let [{:keys [:string-id :locale-id]} (om/get-computed this)]
     (string-id-and-locale->ident string-id locale-id)))
 
+(defn localised-string-value [this]
+  (let [value (get-in (om/props this) [:localised/string :localised-value])
+        {:keys [:string-id]} (om/get-computed this)]
+    (or value (str string-id))))
+
 (defui LocalisedString
   static om/Ident
   (ident [this props]
@@ -21,12 +26,10 @@
 
   Object
   (render [this]
-    (let [props (om/props this)
-          value (get-in props [:localised/string :localised-value])
-          {:keys [:render-fn :string-id]} (om/get-computed this)
-          value (or value (str string-id))]
-      (log "LocalisedString: render: props " props)
-      (render-fn value))))
+    (let [value (localised-string-value this)
+          {:keys [:tag]} (om/get-computed this)]
+      ;;(log "LocalisedString: render: props " props)
+      (html [tag value]))))
 
 (def localised-string (om/factory LocalisedString {:keyfn (fn [props] (make-ident props))}))
 
@@ -45,11 +48,9 @@
       (om/transact! this `[(localised-string/set {:string/ident ~string-id, :locale/id ~locale-id, :text ~text}) ~(om/get-ident this) :localised-strings])))
 
   (render [this]
-    (let [props (om/props this)
-          value (get-in props [:localised/string :localised-value])
-          {:keys [:tag :string-id]} (om/get-computed this)
-          value (or value (str string-id))]
-      (log "EditableLocalisedString: render: props " props)
+    (let [value (localised-string-value this)
+          {:keys [:tag]} (om/get-computed this)]
+      ;;(log "EditableLocalisedString: render: props " props)
       (editable-text (om/computed {:text value} {:callback #(.edited-text this %) :tag tag})))))
 
 (def editable-localised-string (om/factory EditableLocalisedString {:keyfn (fn [props] (str "editable" (make-ident props)))}))
