@@ -12,7 +12,8 @@
                   [sablono "0.5.3"]
                   [cljsjs/react "0.14.3-0"]
                   [cljsjs/react-dom "0.14.3-1"]
-                  [cljsjs/react-dom-server "0.14.3-0"]]
+                  [cljsjs/react-dom-server "0.14.3-0"]
+                  [doo "0.1.6"]]
 
   :plugins [[lein-cljsbuild "1.1.2"]
             [lein-figwheel "0.5.0-3"]
@@ -36,12 +37,12 @@
                               :parallel-build true}
                   :figwheel {:on-jsload "om-next-datascript-localisation-demo.core/on-js-reload"}}
 
-                { :id "min"
+                { :id "prod"
                   :source-paths ["src"]
                   :compiler { :main om-next-datascript-localisation-demo.core
-                              :output-to  "resources/public/compiled/min/om_next_datascript_localisation_demo.js"
-                              :output-dir "resources/public/compiled/min"
-                              :asset-path "/compiled/min"
+                              :output-to  "resources/public/compiled/prod/om_next_datascript_localisation_demo.js"
+                              :output-dir "resources/public/compiled/prod"
+                              :asset-path "/js"
                               :optimizations :advanced
                               :pretty-print false
                               :parallel-build true}}

@@ -6,25 +6,27 @@
 # it is lifted from https://github.com/Jannis/om-next-kanban-demo/
 
 # make sure the compiled files exist
-lein cljsbuild once
+lein cljsbuild once prod
 
 # Create temporary directory
 tmpdir=$(mktemp -d)
 #echo $tmpdir
 
 mkdir ${tmpdir}/css
-mkdir -p ${tmpdir}/compiled/min
+mkdir ${tmpdir}/ico
+mkdir ${tmpdir}/js
 
 # Copy the latest build to it
 cp resources/public/*.html "$tmpdir"
 cp resources/public/css/* "$tmpdir"/css
-cp resources/public/compiled/min/om_next_datascript_localisation_demo.js "$tmpdir"/compiled/min/om_next_datascript_localisation_demo.js
+cp resources/public/ico/* "$tmpdir"/ico
+cp resources/public/compiled/prod/om_next_datascript_localisation_demo.js "$tmpdir"/js
 
 # Switch to the gh-pages branch
 git checkout gh-pages
 
 # Remove the old sources
-git rm -rf *.html css compiled
+git rm -rf *.html css compiled ico js
 
 # Copy the build into it
 cp -R "$tmpdir"/* .
@@ -34,7 +36,7 @@ rm -rf "$tmpdir"
 commit=$(git log -n1 --format="%H" master)
 
 # Create a new commit from the new sources
-git add .
+git add *.html css ico js
 git commit -a -m "Update to $commit"
 
 # Push gh-pages to GitHub
