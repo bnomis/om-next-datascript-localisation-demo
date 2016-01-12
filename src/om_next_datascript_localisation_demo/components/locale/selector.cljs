@@ -62,6 +62,7 @@
   (render [this]
     (let [props (om/props this)
           locales (get-in props [:locales])
+          locales (sort-by :db/id locales)
           app-locale (get-in props [:app.locale :db/id])
           locales (filter-locales locales app-locale)]
       (log "LocaleSelector: render: props " props)

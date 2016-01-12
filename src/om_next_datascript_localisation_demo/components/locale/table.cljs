@@ -139,6 +139,7 @@
   (render [this]
     (let [props (om/props this)
           locales (:locales props)
+          locales (sort-by :db/id locales)
           ;; to make sure the locales for each locale are in a consistent order
           ;; we define the order
           order (mapv #(get-in % [:db/id]) locales)

@@ -143,6 +143,7 @@
   (render [this]
     (let [props (om/props this)
           locales (:locales props)
+          locales (sort-by :db/id locales)
           localised-strings (:localised-strings props)
           localised-strings (sort-by :string/ident localised-strings)
           ;; to make sure locales are in a consistent order
