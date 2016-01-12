@@ -3,13 +3,14 @@
     [om.next :as om]
     [datascript.core :as d]
     [om-next-datascript-localisation-demo.logging :refer-macros [log log-params log-read log-mutate]]
-    [om-next-datascript-localisation-demo.datascript.db :refer [db-pull app-locale app-locale-id app-locale-code app-locale-entity
-                                  add-db-id-param-to-query locales-for-id locale-ids read-locales
-                                  app-localise app-localise-query app-localise-string
-                                  app-localise-query-for-id localise app-locale-tx-after-deleting-locales
-                                  unique-locale-code unique-localised-string-ident the-db
-                                  read-default locale-refs read-locale read-localised-strings
-                                  localise-string-with-query make-edited-string-tx]]
+    [om-next-datascript-localisation-demo.datascript.db
+      :refer [db-pull app-locale app-locale-id app-locale-code app-locale-entity
+              add-db-id-param-to-query locales-for-id locale-ids read-locales
+              app-localise app-localise-query app-localise-string app-localise-date
+              app-localise-query-for-id localise app-locale-tx-after-deleting-locales
+              unique-locale-code unique-localised-string-ident the-db
+              read-default locale-refs read-locale read-localised-strings
+              localise-string-with-query make-edited-string-tx]]
     [om-next-datascript-localisation-demo.utils.ident :refer [ident->string-id-and-locale]]))
 
 ;;(enable-console-print!)
@@ -139,6 +140,22 @@
         query (:query env)
         ident (:ident params)]
     {:value (db-pull db ident query)}))
+
+
+;; return requested date things in the app locale
+(defmethod read :app.localised/date
+  [env key params]
+  (log "--- read app.localised/date")
+  (log-read env key params)
+  (let [db (:state env)
+        query (:query env)]
+    (loop [this (first query)
+            these (rest query)
+            results {}]
+      (if-not this
+        {:value results}
+        (recur (first these) (rest these) (assoc results this (app-localise-date db this)))))))
+
 
 
 ;;

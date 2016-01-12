@@ -79,7 +79,9 @@
 (defn map->id
   [value]
   (if (map? value)
-    (:db/id value)
+    (if (contains? value :db/id)
+      (:db/id value)
+      (log "map->id: no :db/id in map:" value))
     value))
 
 (defn id->map
@@ -127,16 +129,24 @@
 (defn localise
   [db id locale-id]
   {:pre [db id]}
-  (let [id (map->id id)
-        locale-id (map->id locale-id)
-        localised-val (when locale-id
-                        (d/q '[:find ?value .
-                                :in $ ?id ?locale-id
-                                :where
-                                  [?id :localised ?locale]
-                                  [?locale :localised/locale ?locale-id]
-                                  [?locale :value ?value]] @db id locale-id))]
-    (or localised-val (default-value db id))))
+  (if-let [id (map->id id)]
+    (let [locale-id (map->id locale-id)
+          localised-val (when locale-id
+                          (d/q '[:find ?value .
+                                  :in $ ?id ?locale-id
+                                  :where
+                                    [?id :localised ?locale]
+                                    [?locale :localised/locale ?locale-id]
+                                    [?locale :value ?value]] @db id locale-id))]
+      (or localised-val (default-value db id)))))
+
+(defn localise-many [db ids locale-id]
+  (loop [out []
+          id (first ids)
+          ids (rest ids)]
+    (if-not id
+      out
+      (recur (conj out (localise db id locale-id)) (first ids) (rest ids)))))
 
 
 (defn app-locale-id
@@ -243,8 +253,6 @@
           result (db-pull db eid query)]
     (assoc result :value s))))
 
-
-
 (defn localised-strings-ids
   [db]
   (d/q '[:find [?e ...]
@@ -258,6 +266,54 @@
    (let [ids (localised-strings-ids db)
          query (or query '[*])]
      (db-pull-many db ids query))))
+
+
+;; dates
+
+;; days
+
+(defn find-day-ids
+  [db]
+  (d/q '[:find [?e ...]
+          :where
+          [?e :date/day _]]
+      @db))
+
+(defn localise-days [db locale-id]
+  (let [day-ids (find-day-ids db)
+        days (db-pull-many db day-ids [:db/id :date/day])
+        days (sort-by :date/day days)]
+    (localise-many db days locale-id)))
+
+
+;; months
+
+(defn find-month-ids
+  [db]
+  (d/q '[:find [?e ...]
+          :where
+          [?e :date/month _]]
+      @db))
+
+(defn localise-months [db locale-id]
+  (let [month-ids (find-month-ids db)
+        months (db-pull-many db month-ids [:db/id :date/month])
+        months (sort-by :date/month months)]
+    (localise-many db months locale-id)))
+
+
+(defn localise-date
+  [db this locale-id]
+  {:pre [db this locale-id]}
+  (case this
+    :days (localise-days db locale-id)
+    :months (localise-months db locale-id)
+    nil))
+
+(defn app-localise-date
+  [db this]
+  {:pre [db this]}
+  (localise-date db this (app-locale-id db)))
 
 
 (defn app-localise-map

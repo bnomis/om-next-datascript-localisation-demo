@@ -8,7 +8,8 @@
     [om-next-datascript-localisation-demo.components.locale.table :refer [LocalesTable locales-table]]
     [om-next-datascript-localisation-demo.components.locale.strings :refer [LocalisedStringTable localised-string-table]]
     [om-next-datascript-localisation-demo.components.locale.localised-string :refer [localised-string editable-localised-string]]
-    [om-next-datascript-localisation-demo.utils.html :refer [set-html-lang set-html-title]]))
+    [om-next-datascript-localisation-demo.utils.html :refer [set-html-lang set-html-title]]
+    [om-next-datascript-localisation-demo.utils.interpolator :refer [interp]]))
 
 
 (defn render-string [factory props]
@@ -19,7 +20,8 @@
   static om/IQuery
   (query [this]
     `[  {:app.locale [:db/id :locale/code :localised]}
-        {:app.localised/strings [:app/title :app/desc :app/current-locale :app/missing]}
+        {:app.localised/strings [:app/title :app/desc :app/current-locale :app/missing :date/today :date/format]}
+        {:app.localised/date [:days :months]}
         {:locales-selector-props ~(om/get-query LocalesSelector)}
         {:locales-table-props ~(om/get-query LocalesTable)}
         {:localised-string-table-props ~(om/get-query LocalisedStringTable)}])
@@ -33,6 +35,8 @@
           localised (some (fn [l] (when (= app-locale-id (get-in l [:localised/locale :db/id])) l)) localised)
           localised (if localised (:value localised) code)
           strings (get-in props [:app.localised/strings])
+          months (get-in props [:app.localised/date :months])
+          days (get-in props [:app.localised/date :days])
           locales-selector-props (get-in props [:locales-selector-props])
           locales-table-props (get-in props [:locales-table-props])
           localised-string-table-props (get-in props [:localised-string-table-props])
@@ -47,7 +51,13 @@
                         {:query-props {:localised/string {:localised-value (:app/missing strings)}}
                           :computed-props { :tag :p
                                             :string-id :app/missing
-                                            :locale-id app-locale-id}}]]
+                                            :locale-id app-locale-id}}]
+          date-format (:date/format strings)
+          date (js/Date.)
+          year (.getFullYear date)
+          month (.getMonth date)
+          day (.getDay date)
+          date (.getDate date)]
 
       (log "-----------------------------")
       (log "App render:" props)
@@ -56,7 +66,8 @@
       (html [:div
               (map #(render-string localised-string %) string-props)
               (map #(render-string editable-localised-string %) string-props)
-              
+              (if date-format
+                [:p (:date/today strings) ": " (interp date-format {:year year :month (get months month) :date date :day (get days day)})])
               (if code
                 [:p (:app/current-locale strings) ": " localised]
                 [:p "No app locale is set"])

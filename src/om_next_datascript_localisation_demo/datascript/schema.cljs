@@ -59,6 +59,23 @@
       :db/doc "String identifier"}
 
     ;;
+    ;; dates
+    ;;
+
+    ;; months
+    :date/month
+    {:db/fulltext true
+      :db/unique :db.unique/identity
+      :db/doc " Month index"}
+
+    ;; days
+    :date/day
+    {:db/fulltext true
+      :db/unique :db.unique/identity
+      :db/doc "Day index"}
+
+
+    ;;
     ;; the app
     ;;
 
