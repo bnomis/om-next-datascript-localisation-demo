@@ -15,7 +15,7 @@
                   [cljsjs/react-dom-server "0.14.3-0"]]
 
   :plugins [[lein-cljsbuild "1.1.2"]
-            [lein-figwheel "0.5.0-2"]
+            [lein-figwheel "0.5.0-3"]
             [lein-doo "0.1.6"]]
 
   :source-paths ["src"]
@@ -25,27 +25,27 @@
   :figwheel {:css-dirs ["resources/public/css"]}
 
   :cljsbuild {:builds
-              [ {:id "dev"
+              [ { :id "dev"
                   :source-paths ["src"]
-                  :compiler {:main om-next-datascript-localisation-demo.core}
-                            :output-to  "resources/public/compiled/dev/om_next_datascript_localisation_demo.js"
-                            :output-dir "resources/public/compiled/dev"
-                            :asset-path "compiled/dev"
-                            :source-map-timestamp true
-                            :verbose true
-                            :parallel-build true
+                  :compiler { :main om-next-datascript-localisation-demo.core
+                              :output-to  "resources/public/compiled/dev/om_next_datascript_localisation_demo.js"
+                              :output-dir "resources/public/compiled/dev"
+                              :asset-path "/compiled/dev"
+                              :source-map-timestamp true
+                              :verbose true
+                              :parallel-build true}
                   :figwheel {:on-jsload "om-next-datascript-localisation-demo.core/on-js-reload"}}
 
-                {:id "min"
+                { :id "min"
                   :source-paths ["src"]
                   :compiler { :main om-next-datascript-localisation-demo.core
                               :output-to  "resources/public/compiled/min/om_next_datascript_localisation_demo.js"
                               :output-dir "resources/public/compiled/min"
-                              :asset-path "compiled/min"
+                              :asset-path "/compiled/min"
                               :optimizations :advanced
                               :pretty-print false
                               :parallel-build true}}
-                {:id "test"
+                { :id "test"
                   :source-paths ["src" "test"]
                   :compiler { :output-to  "resources/public/compiled/test/testable.js"
                               :output-dir "resources/public/compiled/test"
