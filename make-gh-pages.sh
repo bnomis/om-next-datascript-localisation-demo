@@ -26,7 +26,7 @@ cp resources/public/compiled/prod/om_next_datascript_localisation_demo.js "$tmpd
 git checkout gh-pages
 
 # Remove the old sources
-git rm -rf *.html css compiled ico js
+git rm -rf *.html css ico js
 
 # Copy the build into it
 cp -R "$tmpdir"/* .
@@ -36,7 +36,7 @@ rm -rf "$tmpdir"
 commit=$(git log -n1 --format="%H" master)
 
 # Create a new commit from the new sources
-git add *.html css ico js compiled
+git add *.html css ico js
 git commit -a -m "Update to $commit"
 
 # Push gh-pages to GitHub
