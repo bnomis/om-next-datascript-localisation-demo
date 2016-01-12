@@ -6,6 +6,7 @@
 # it is lifted from https://github.com/Jannis/om-next-kanban-demo/
 
 # make sure the compiled files exist
+# switching back and forth between branches loses the compiled output
 lein cljsbuild once prod
 
 # Create temporary directory
