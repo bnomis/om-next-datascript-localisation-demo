@@ -19,7 +19,7 @@ mkdir ${tmpdir}/js
 # Copy the latest build to it
 cp resources/public/*.html "$tmpdir"
 cp resources/public/css/* "$tmpdir"/css
-cp resources/public/ico/* "$tmpdir"/ico
+cp -R resources/public/ico/* "$tmpdir"/ico
 cp resources/public/compiled/prod/om_next_datascript_localisation_demo.js "$tmpdir"/js
 
 # Switch to the gh-pages branch
@@ -36,7 +36,7 @@ rm -rf "$tmpdir"
 commit=$(git log -n1 --format="%H" master)
 
 # Create a new commit from the new sources
-git add *.html css ico js
+git add *.html css ico js compiled
 git commit -a -m "Update to $commit"
 
 # Push gh-pages to GitHub
