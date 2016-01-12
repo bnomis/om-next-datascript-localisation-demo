@@ -144,6 +144,7 @@
     (let [props (om/props this)
           locales (:locales props)
           localised-strings (:localised-strings props)
+          localised-strings (sort-by :string/ident localised-strings)
           ;; to make sure locales are in a consistent order
           ;; we pass the order of display to the row
           order (mapv #(get-in % [:db/id]) locales)
