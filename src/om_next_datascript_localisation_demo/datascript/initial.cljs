@@ -118,7 +118,7 @@
 
     {:db/id -402
       :localised/locale -100020
-      :value "应用现用语言为"}
+      :value "现用语言为"}
 
     {:db/id -403
       :localised/locale -100030
@@ -174,11 +174,11 @@
 
     {:db/id -702
       :localised/locale -100020
-      :value "Today's date is (cn)"}
+      :value "今天的日期是"}
 
     {:db/id -703
       :localised/locale -100030
-      :value "Today's date is (fr)"}
+      :value "La date de aujourd'hui est"}
 
     {:db/id -700
       :string/ident :date/today
@@ -194,11 +194,12 @@
       :value "Sunday"}
     {:db/id -1002
       :localised/locale -100020
-      :value "周一"}
+      :value "周日"}
     {:db/id -1003
       :localised/locale -100030
-      :value "Lundi"}
+      :value "Dimanche"}
     {:db/id -1000
+      :string/ident :date/day-0
       :date/day 0
       :value "Sunday"
       :localised [-1001 -1002 -1003]}
@@ -214,6 +215,7 @@
       :localised/locale -100030
       :value "Lundi"}
     {:db/id -1010
+      :string/ident :date/day-1
       :date/day 1
       :value "Monday"
       :localised [-1011 -1012 -1013]}
@@ -224,11 +226,12 @@
       :value "Tuesday"}
     {:db/id -1022
       :localised/locale -100020
-      :value "周一"}
+      :value "周二"}
     {:db/id -1023
       :localised/locale -100030
-      :value "Lundi"}
+      :value "Mardi"}
     {:db/id -1020
+      :string/ident :date/day-2
       :date/day 2
       :value "Tuesday"
       :localised [-1021 -1022 -1023]}
@@ -239,11 +242,12 @@
       :value "Wednesday"}
     {:db/id -1032
       :localised/locale -100020
-      :value "周一"}
+      :value "周三"}
     {:db/id -1033
       :localised/locale -100030
-      :value "Lundi"}
+      :value "Mercredi"}
     {:db/id -1030
+      :string/ident :date/day-3
       :date/day 3
       :value "Wednesday"
       :localised [-1031 -1032 -1033]}
@@ -254,11 +258,12 @@
       :value "Thursday"}
     {:db/id -1042
       :localised/locale -100020
-      :value "周一"}
+      :value "周四"}
     {:db/id -1043
       :localised/locale -100030
-      :value "Lundi"}
+      :value "Jeudi"}
     {:db/id -1040
+      :string/ident :date/day-4
       :date/day 4
       :value "Thursday"
       :localised [-1041 -1042 -1043]}
@@ -269,11 +274,12 @@
       :value "Friday"}
     {:db/id -1052
       :localised/locale -100020
-      :value "周一"}
+      :value "周五"}
     {:db/id -1053
       :localised/locale -100030
-      :value "Lundi"}
+      :value "Vendredi"}
     {:db/id -1050
+      :string/ident :date/day-5
       :date/day 5
       :value "Friday"
       :localised [-1051 -1052 -1053]}
@@ -284,11 +290,12 @@
       :value "Saturday"}
     {:db/id -1062
       :localised/locale -100020
-      :value "周一"}
+      :value "周六"}
     {:db/id -1063
       :localised/locale -100030
-      :value "Lundi"}
+      :value "Samedi"}
     {:db/id -1060
+      :string/ident :date/day-6
       :date/day 6
       :value "Saturday"
       :localised [-1061 -1062 -1063]}
@@ -306,6 +313,7 @@
       :localised/locale -100030
       :value "Janvier"}
     {:db/id -2000
+      :string/ident :date/month-00
       :date/month 0
       :value "January"
       :localised [-2001 -2002 -2003]}
@@ -319,8 +327,9 @@
       :value "2"}
     {:db/id -2013
       :localised/locale -100030
-      :value "Janvier"}
+      :value "Février"}
     {:db/id -2010
+      :string/ident :date/month-01
       :date/month 1
       :value "February"
       :localised [-2011 -2012 -2013]}
@@ -334,8 +343,9 @@
       :value "3"}
     {:db/id -2023
       :localised/locale -100030
-      :value "Janvier"}
+      :value "Mars"}
     {:db/id -2020
+      :string/ident :date/month-02
       :date/month 2
       :value "March"
       :localised [-2021 -2022 -2023]}
@@ -349,8 +359,9 @@
       :value "4"}
     {:db/id -2033
       :localised/locale -100030
-      :value "Janvier"}
+      :value "Avril"}
     {:db/id -2030
+      :string/ident :date/month-03
       :date/month 3
       :value "April"
       :localised [-2031 -2032 -2033]}
@@ -364,8 +375,9 @@
       :value "5"}
     {:db/id -2043
       :localised/locale -100030
-      :value "Janvier"}
+      :value "Mai"}
     {:db/id -2040
+      :string/ident :date/month-04
       :date/month 4
       :value "May"
       :localised [-2041 -2042 -2043]}
@@ -379,8 +391,9 @@
       :value "6"}
     {:db/id -2053
       :localised/locale -100030
-      :value "Janvier"}
+      :value "Juin"}
     {:db/id -2050
+      :string/ident :date/month-05
       :date/month 5
       :value "June"
       :localised [-2051 -2052 -2053]}
@@ -394,8 +407,9 @@
       :value "7"}
     {:db/id -2063
       :localised/locale -100030
-      :value "Janvier"}
+      :value "Juillet"}
     {:db/id -2060
+      :string/ident :date/month-06
       :date/month 6
       :value "July"
       :localised [-2061 -2062 -2063]}
@@ -409,8 +423,9 @@
       :value "8"}
     {:db/id -2073
       :localised/locale -100030
-      :value "Janvier"}
+      :value "Août"}
     {:db/id -2070
+      :string/ident :date/month-07
       :date/month 7
       :value "August"
       :localised [-2071 -2072 -2073]}
@@ -424,8 +439,9 @@
       :value "9"}
     {:db/id -2083
       :localised/locale -100030
-      :value "Janvier"}
+      :value "Septembre"}
     {:db/id -2080
+      :string/ident :date/month-08
       :date/month 8
       :value "September"
       :localised [-2081 -2082 -2083]}
@@ -439,8 +455,9 @@
       :value "10"}
     {:db/id -2093
       :localised/locale -100030
-      :value "Janvier"}
+      :value "Octobre"}
     {:db/id -2090
+      :string/ident :date/month-09
       :date/month 9
       :value "October"
       :localised [-2091 -2092 -2093]}
@@ -454,8 +471,9 @@
       :value "11"}
     {:db/id -2103
       :localised/locale -100030
-      :value "Janvier"}
+      :value "Novembre"}
     {:db/id -2100
+      :string/ident :date/month-10
       :date/month 10
       :value "November"
       :localised [-2101 -2102 -2103]}
@@ -469,8 +487,9 @@
       :value "12"}
     {:db/id -2113
       :localised/locale -100030
-      :value "Janvier"}
+      :value "Décembre"}
     {:db/id -2110
+      :string/ident :date/month-11
       :date/month 11
       :value "December"
       :localised [-2111 -2112 -2113]}])
