@@ -46,7 +46,7 @@
                               :pretty-print false
                               :parallel-build true}}
                 { :id "test"
-                  :source-paths ["src" "test"]
+                  :source-paths ["test"]
                   :compiler { :output-to  "resources/public/compiled/test/testable.js"
                               :output-dir "resources/public/compiled/test"
                               :main om-next-datascript-localisation-demo.runner

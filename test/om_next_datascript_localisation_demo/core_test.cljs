@@ -17,4 +17,5 @@
     (is (= "2016 1 11" (interp "{year} {month} {day}" {:year 2016 :month 1 :day 11})))
     (is (= "2016 January Monday" (interp "{year} {month} {day}" {:year 2016 :month "January" :day "Monday"})))
     (is (= "Monday, 11 January 2016" (interp "{day-of-week}, {date} {month} {year}" {:year 2016 :date 11 :month "January" :day-of-week "Monday"})))
-    (is (= "2016年1月11日，周一" (interp "{year}年{month}月{date}日，{day-of-week}" {:year 2016 :date 11 :month 1 :day-of-week "周一"})))))
+    (is (= "2016年1月11日，周一" (interp "{year}年{month}月{date}日，{day-of-week}" {:year 2016 :date 11 :month 1 :day-of-week "周一"})))
+    (is (= "Lundi, 11 Janvier 2016" (interp "{day-of-week}, {date} {month} {year}" {:year 2016 :date 11 :month "Janvier" :day-of-week "Lundi"})))))
