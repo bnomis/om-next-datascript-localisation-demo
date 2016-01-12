@@ -78,19 +78,19 @@
     ;; app title string
     {:db/id -201
       :localised/locale -100010
-      :value "App Title (en)"}
+      :value "Om Next DataScript Localisation Demo"}
 
     {:db/id -202
       :localised/locale -100020
-      :value "App Title (cn)"}
+      :value "Om Next DataScript Localisation Demo (cn)"}
 
     {:db/id -203
       :localised/locale -100030
-      :value "App Title (fr)"}
+      :value "Om Next DataScript Localisation Demo (fr)"}
 
     {:db/id -200
       :string/ident :app/title
-      :value "App Title"
+      :value "Om Next DataScript Localisation Demo"
       :localised [-201 -202 -203]}
 
     ;; app description string
