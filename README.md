@@ -1,15 +1,22 @@
 # Om Next DataScript Localisation Demo
 
+https://bnomis.github.io/om-next-datascript-localisation-demo/
+
 Demo of localisation with [Om Next][om] and [DataScript][ds].
 
-https://bnomis.github.io/om-next-datascript-localisation-demo/
+## About
 
 [Om Next][om] is a [ClojureScript][cljs] wrapper around [React][react].
 
 [DataScript][ds] is a [ClojureScript][cljs] implementation of [Datomic][datomic].
 
-This project uses [Leiningen][lein] for building and running tests.
-And [doo][doo] to provide a JavaScript environment for non-ui testing.
+This project uses:
+
+* [Leiningen][lein] for building and running tests
+* [Figwheel][fig] for interactive development
+* [doo][doo] to provide a JavaScript environment for non-ui testing
+
+### Hire Me
 
 *ps:* I'm available for hire remotely or in Shanghai. Thanks.
 
@@ -63,3 +70,4 @@ To run the tests (in this example using [node][node] as the JavaScript engine):
 [cljs]: https://github.com/clojure/clojurescript
 [datomic]: http://docs.datomic.com/
 [lein]: https://github.com/technomancy/leiningen/
+[fig]: https://github.com/bhauman/lein-figwheel
