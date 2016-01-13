@@ -129,7 +129,7 @@
       :value "The current app locale is"
       :localised [-401 -402 -403]}
 
-    ;; choose app locale string
+    ;; choose locale string
     {:db/id -501
       :localised/locale -100010
       :value "Choose a different locale"}
@@ -143,9 +143,28 @@
       :value "Choose a different locale (fr)"}
 
     {:db/id -500
-      :string/ident :app/choose-locale
+      :string/ident :locale/choose
       :value "Choose a different locale"
       :localised [-501 -502 -503]}
+
+    ;; choose language string
+    {:db/id -511
+      :localised/locale -100010
+      :value "Choose a different language"}
+
+    {:db/id -512
+      :localised/locale -100020
+      :value "选择其它语言"}
+
+    {:db/id -513
+      :localised/locale -100030
+      :value "Choose a different language (fr)"}
+
+    {:db/id -510
+      :string/ident :language/choose
+      :value "Choose a different language"
+      :localised [-511 -512 -513]}
+
 
     ;; dates
 

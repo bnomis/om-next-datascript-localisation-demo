@@ -56,6 +56,7 @@
   static om/IQuery
   (query [this]
     `[{:app.locale [:db/id]}
+      {:app.localised/strings [:language/choose]}
       :locales])
 
   Object
@@ -64,12 +65,13 @@
           locales (get-in props [:locales])
           locales (sort-by :db/id locales)
           app-locale (get-in props [:app.locale :db/id])
-          locales (filter-locales locales app-locale)]
+          locales (filter-locales locales app-locale)
+          strings (get-in props [:app.localised/strings])]
       (log "LocaleSelector: render: props " props)
       (when (seq locales)
         (html
           [:div
-            [:p "Choose a different locale:"]
+            [:p (:language/choose strings) ":"]
             [:ul
               (map #(locale-selector-link {:locale %}) locales)]])))))
 
