@@ -96,7 +96,7 @@
     ;; app description string
     {:db/id -211
       :localised/locale -100010
-      :value "App description (en)"}
+      :value "This is a demo of localisation using Om Next and DataScript."}
 
     {:db/id -212
       :localised/locale -100020
@@ -237,6 +237,77 @@
       :value "Enum"
       :localised [-281 -282 -283]}
 
+    ;; information
+    {:db/id -291
+      :localised/locale -100010
+      :value "Demo Information"}
+
+    {:db/id -292
+      :localised/locale -100020
+      :value "Demo Information (cn)"}
+
+    {:db/id -293
+      :localised/locale -100030
+      :value "Demo Information (fr)"}
+
+    {:db/id -290
+      :string/ident :app/information
+      :value "Demo Information"
+      :localised [-291 -292 -293]}
+
+    ;; explain
+    {:db/id -301
+      :localised/locale -100010
+      :value "Text in a dotted box <span class='editable-text'>like this</span> is editable. Click to edit. Click outside the box or hit Return/Escape to stop editing."}
+
+    {:db/id -302
+      :localised/locale -100020
+      :value "Text in a dotted box <span class='editable-text'>like this</span> is editable. Click to edit. Click outside the box or hit Return/Escape to stop editing. (cn)"}
+
+    {:db/id -303
+      :localised/locale -100030
+      :value "Text in a dotted box <span class='editable-text'>like this</span> is editable. Click to edit. Click outside the box or hit Return/Escape to stop editing. (fr)"}
+
+    {:db/id -300
+      :string/ident :app/explain
+      :value "Text in a dotted box <span class='editable-text'>like this</span> is editable. Click to edit. Click outside the box or hit Return/Escape to stop editing."
+      :localised [-301 -302 -303]}
+
+    ;; editable localised strings
+    {:db/id -311
+      :localised/locale -100010
+      :value "Editable localised strings."}
+
+    {:db/id -312
+      :localised/locale -100020
+      :value "Editable localised strings. (cn)"}
+
+    {:db/id -313
+      :localised/locale -100030
+      :value "Editable localised strings. (fr)"}
+
+    {:db/id -310
+      :string/ident :app/editable-localised-strings
+      :value "Editable localised strings."
+      :localised [-311 -312 -313]}
+
+    ;; read only localised strings
+    {:db/id -321
+      :localised/locale -100010
+      :value "The same localised strings as above but read only."}
+
+    {:db/id -322
+      :localised/locale -100020
+      :value "The same localised strings as above but read only. (cn)"}
+
+    {:db/id -323
+      :localised/locale -100030
+      :value "The same localised strings as above but read only. (fr)"}
+
+    {:db/id -320
+      :string/ident :app/read-only-localised-strings
+      :value "The same localised strings as above but read only."
+      :localised [-321 -322 -323]}
 
     ;; choose locale string
     {:db/id -501

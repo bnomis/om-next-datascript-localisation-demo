@@ -20,7 +20,7 @@
   static om/IQuery
   (query [this]
     `[  {:app.locale [:db/id :locale/code :localised]}
-        {:app.localised/strings [:app/title :app/desc :app/current-locale :app/missing :date/today :date/format]}
+        {:app.localised/strings [:app/editable-localised-strings :app/read-only-localised-strings :app/explain :app/information :app/title :app/desc :app/current-locale :app/missing :date/today :date/format]}
         {:app.localised/date [:days :months]}
         {:locales-selector-props ~(om/get-query LocalesSelector)}
         {:locales-table-props ~(om/get-query LocalesTable)}
@@ -64,13 +64,20 @@
       (set-html-lang code)
       (set-html-title (:app/title strings))
       (html [:div
-              (map #(render-string localised-string %) string-props)
-              (map #(render-string editable-localised-string %) string-props)
-              (if date-format
-                [:p (:date/today strings) ": " (interp date-format {:year year :month (get months month) :date date :day (get days day)})])
-              (if code
-                [:p (:app/current-locale strings) ": " localised]
-                [:p "No app locale is set"])
-              (locales-selector locales-selector-props)
+              [:p.explain {:dangerouslySetInnerHTML {:__html (:app/explain strings)}}]
+              [:div {:class "functional-block"}
+                [:p.explain (:app/editable-localised-strings strings)]
+                (map #(render-string editable-localised-string %) string-props)]
+              [:div {:class "functional-block"}
+                [:p.explain (:app/read-only-localised-strings strings)]
+                (map #(render-string localised-string %) string-props)]
+              [:div {:class "functional-block"}
+                [:h2 (:app/information strings)]
+                (if date-format
+                  [:p (:date/today strings) ": " (interp date-format {:year year :month (get months month) :date date :day (get days day)})])
+                (if code
+                  [:p (:app/current-locale strings) ": " localised]
+                  [:p "No app locale is set"])
+                (locales-selector locales-selector-props)]
               (locales-table locales-table-props)
               (localised-string-table localised-string-table-props)]))))
