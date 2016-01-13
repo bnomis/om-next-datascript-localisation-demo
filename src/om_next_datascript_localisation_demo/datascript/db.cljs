@@ -20,8 +20,7 @@
 
 
 (defn db-pull
-  ([db eid]
-   (db-pull db eid '[*]))
+  ([db eid] (db-pull db eid '[*]))
   ([db eid query]
    (if eid
      (let [query (or query '[*])]
@@ -267,6 +266,15 @@
          query (or query '[*])]
      (db-pull-many db ids query))))
 
+
+(defn read-localised-string
+  [db query]
+    (let [string-id (first query)
+          eid (string-id->eid db string-id)
+          query (rest query)
+          query (if (not-empty query) query '[*])]
+      (when eid
+        (db-pull db eid query))))
 
 ;; dates
 

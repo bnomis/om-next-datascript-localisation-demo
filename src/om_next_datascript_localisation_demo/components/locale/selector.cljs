@@ -3,7 +3,8 @@
     [om.next :as om :refer-macros [defui]]
     [sablono.core :as html :refer-macros [html]]
     [om-next-datascript-localisation-demo.logging :refer-macros [log]]
-    [om-next-datascript-localisation-demo.utils.app :refer [set-app-locale]]))
+    [om-next-datascript-localisation-demo.utils.app :refer [set-app-locale]]
+    [om-next-datascript-localisation-demo.components.looper :refer [looper]]))
 
 
 ;; find the locale name in its own locale
@@ -57,6 +58,7 @@
   (query [this]
     `[{:app.locale [:db/id]}
       {:app.localised/strings [:language/choose]}
+      {:localised-string [:language/choose]}
       :locales])
 
   Object
@@ -66,12 +68,14 @@
           locales (sort-by :db/id locales)
           app-locale (get-in props [:app.locale :db/id])
           locales (filter-locales locales app-locale)
-          strings (get-in props [:app.localised/strings])]
-      (log "LocaleSelector: render: props " props)
+          strings (get-in props [:app.localised/strings])
+          choose (map :value (get-in props [:localised-string :localised]))]
+      (log "LocaleSelector: render: props:" props)
+      (log "LocaleSelector: render: choose:" choose)
       (when (seq locales)
         (html
           [:div
-            [:p (:language/choose strings) ":"]
+            (looper {:things choose})
             [:ul
               (map #(locale-selector-link {:locale %}) locales)]])))))
 

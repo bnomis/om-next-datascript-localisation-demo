@@ -9,7 +9,7 @@
               app-localise app-localise-query app-localise-string app-localise-date
               app-localise-query-for-id localise app-locale-tx-after-deleting-locales
               unique-locale-code unique-localised-string-ident the-db
-              read-default locale-refs read-locale read-localised-strings
+              read-default locale-refs read-locale read-localised-string read-localised-strings
               localise-string-with-query make-edited-string-tx]]
     [om-next-datascript-localisation-demo.utils.ident :refer [ident->string-id-and-locale]]))
 
@@ -121,6 +121,13 @@
         [string-id locale-id] (ident->string-id-and-locale ident)]
     {:value (localise-string-with-query db string-id locale-id query)}))
 
+(defmethod read :localised-string
+  [env key params]
+  (log "--- read localised-string")
+  (log-read env key params)
+  (let [db (:state env)
+        query (:query env)]
+    {:value (read-localised-string db query)}))
 
 (defmethod read :localised-strings
   [env key params]
