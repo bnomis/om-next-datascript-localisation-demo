@@ -51,7 +51,7 @@
 
   static om/IQuery
   (query [this]
-    [{:locale [:db/id :locale/code :locale/enum :value
+    [{:locale [:db/id :locale/code :locale/ident :value
                 {:app.localised [:this]}
                 {:locale.locales (om/get-query Localised)}]}])
 
@@ -65,7 +65,7 @@
           alprops (get-in lprops [:app.localised])
           id (:db/id lprops)
           code (:locale/code lprops)
-          enum (:locale/enum lprops)
+          enum (:locale/ident lprops)
           name (:value lprops)
           localised-name (:this alprops)]
       (html [:div

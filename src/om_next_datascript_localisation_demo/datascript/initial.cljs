@@ -7,21 +7,21 @@
     {:db/id -100010
       :db/ident :locale/en
       :locale/code "en"
-      :locale/enum :locale/en
+      :locale/ident :locale/en
       :value "English"}
 
     ;; chinese locale
     {:db/id -100020
       :db/ident :locale/cn
       :locale/code "cn"
-      :locale/enum :locale/cn
+      :locale/ident :locale/cn
       :value "Chinese"}
 
     ;; french locale
     {:db/id -100030
       :db/ident :locale/fr
       :locale/code "fr"
-      :locale/enum :locale/fr
+      :locale/ident :locale/fr
       :value "French"}
 
     ;; english localised

@@ -61,7 +61,7 @@
   ;; See the Selector component for an example of this in action.
   static om/IQuery
   (query [this]
-    `[({:locale [:db/id :value :locale/code :locale/enum :localised]} {:ident ~(om/get-ident this)})]))
+    `[({:locale [:db/id :value :locale/code :locale/ident :localised]} {:ident ~(om/get-ident this)})]))
 
 (defui LocalesTableRow
   static om/Ident
@@ -72,7 +72,7 @@
   (render [this]
     (let [oprops (om/props this)
           props (:locale oprops)
-          {:keys [:db/id :value :locale/code :locale/enum]} props
+          {:keys [:db/id :value :locale/code :locale/ident]} props
           order (:order oprops)
           checked (:checked oprops)
           locales (:localised props)
@@ -90,7 +90,7 @@
                 :on-change (fn [e] (toggle-checkbox))}]]
           [:td (editable-text (om/computed {:text value} {:callback #(edited-text :value %)}))]
           [:td {:class "center-column"} (editable-text (om/computed {:text code} {:callback #(edited-text :locale/code %)}))]
-          [:td (editable-text (om/computed {:text (str enum)} {:callback #(edited-keyword :locale/enum %)}))]
+          [:td (editable-text (om/computed {:text (str ident)} {:callback #(edited-keyword :locale/ident %)}))]
           (map #(localised-locale-factory % edited-text-id localised-locale-create) localised)]))))
 
 (def locale (om/factory LocalesTableRow {:keyfn (fn [props] (get-in props [:locale :db/id]))}))
@@ -100,7 +100,7 @@
   static om/IQuery
   (query [this]
     `[:locales
-      {:app.localised/strings [:app/code :app/enum :app/default :app/delete-selected :app/select :locale/locales :locale/add-new :locale/localised]}])
+      {:app.localised/strings [:app/code :app/id :app/default :app/delete-selected :app/select :locale/locales :locale/add-new :locale/localised]}])
 
   Object
   (initLocalState [this]
@@ -163,7 +163,7 @@
                       [:th {:class "select-column-width" :rowSpan 2} (:app/select strings)]
                       [:th {:rowSpan 2} (:app/default strings)]
                       [:th {:rowSpan 2} (:app/code strings)]
-                      [:th {:rowSpan 2} (:app/enum strings)]
+                      [:th {:rowSpan 2} (:app/id strings)]
                       [:th {:colSpan (count order)} (:locale/localised strings)]]
                     [:tr
                       (map (fn [l] [:th {:key (get-in l [:db/id])} (get-in l [:locale/code])]) locales)]]

@@ -26,11 +26,11 @@
       :db/unique :db.unique/identity
       :db/doc "Locale code"}
 
-    ;; locale enum
-    :locale/enum
+    ;; locale ident
+    :locale/ident
     {:db/fulltext true
       :db/unique :db.unique/identity
-      :db/doc "Locale enum"}
+      :db/doc "Locale ident"}
 
     ;;
     ;; Localised values

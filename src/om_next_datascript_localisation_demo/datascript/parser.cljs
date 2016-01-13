@@ -188,7 +188,7 @@
         code (unique-locale-code db)
         tx [{:db/id -1
               :locale/code code
-              :locale/enum (keyword "locale" code)
+              :locale/ident (keyword "locale" code)
               :value "Edit me"}]]
     (log "mutate locale/create tx:" tx)
     { :value {:keys [:locales]}
