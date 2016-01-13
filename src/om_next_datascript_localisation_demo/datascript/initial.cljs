@@ -82,11 +82,11 @@
 
     {:db/id -202
       :localised/locale -100020
-      :value "Om Next DataScript Localisation Demo (cn)"}
+      :value "Om Next DataScript 本地语言演示版本"}
 
     {:db/id -203
       :localised/locale -100030
-      :value "Om Next DataScript Localisation Demo (fr)"}
+      :value "Om Next DataScript démo de localisation"}
 
     {:db/id -200
       :string/ident :app/title
@@ -100,11 +100,11 @@
 
     {:db/id -212
       :localised/locale -100020
-      :value "App description (cn)"}
+      :value "此为使用 Om Next and DataScript 制作的本地话演示版本。"}
 
     {:db/id -213
       :localised/locale -100030
-      :value "App description (fr)"}
+      :value "C'est une démonstration de la localisation à l'aide d'Om Next and DataScript."}
 
     {:db/id -210
       :string/ident :app/desc
@@ -118,11 +118,11 @@
 
     {:db/id -222
       :localised/locale -100020
-      :value "现用语言为"}
+      :value "现用本地设置为"}
 
     {:db/id -223
       :localised/locale -100030
-      :value "The current app locale is (fr)"}
+      :value "Le paramètre régional courant de l'application est"}
 
     {:db/id -220
       :string/ident :app/current-locale
@@ -136,11 +136,11 @@
 
     {:db/id -232
       :localised/locale -100020
-      :value "Delete selected (cn)"}
+      :value "删除所选"}
 
     {:db/id -233
       :localised/locale -100030
-      :value "Delete selected (fr)"}
+      :value "Supprimez la sélection"}
 
     {:db/id -230
       :string/ident :app/delete-selected
@@ -154,11 +154,11 @@
 
     {:db/id -242
       :localised/locale -100020
-      :value "Select (cn)"}
+      :value "选择"}
 
     {:db/id -243
       :localised/locale -100030
-      :value "Select (fr)"}
+      :value "Choisissez"}
 
     {:db/id -240
       :string/ident :app/select
@@ -172,11 +172,11 @@
 
     {:db/id -252
       :localised/locale -100020
-      :value "ID (cn)"}
+      :value "用户名"}
 
     {:db/id -253
       :localised/locale -100030
-      :value "ID (fr)"}
+      :value "ID"}
 
     {:db/id -250
       :string/ident :app/id
@@ -190,11 +190,11 @@
 
     {:db/id -262
       :localised/locale -100020
-      :value "Default (cn)"}
+      :value "默认"}
 
     {:db/id -263
       :localised/locale -100030
-      :value "Default (fr)"}
+      :value "Défaut"}
 
     {:db/id -260
       :string/ident :app/default
@@ -208,11 +208,11 @@
 
     {:db/id -272
       :localised/locale -100020
-      :value "Code (cn)"}
+      :value "代码"}
 
     {:db/id -273
       :localised/locale -100030
-      :value "Code (fr)"}
+      :value "Code"}
 
     {:db/id -270
       :string/ident :app/code
@@ -226,11 +226,11 @@
 
     {:db/id -282
       :localised/locale -100020
-      :value "Enum (cn)"}
+      :value "枚举"}
 
     {:db/id -283
       :localised/locale -100030
-      :value "Enum (fr)"}
+      :value "Énuméré"}
 
     {:db/id -280
       :string/ident :app/enum
@@ -244,11 +244,11 @@
 
     {:db/id -292
       :localised/locale -100020
-      :value "Demo Information (cn)"}
+      :value "演示版本信息"}
 
     {:db/id -293
       :localised/locale -100030
-      :value "Demo Information (fr)"}
+      :value "L'information de démo"}
 
     {:db/id -290
       :string/ident :app/information
@@ -262,11 +262,11 @@
 
     {:db/id -302
       :localised/locale -100020
-      :value "Text in a dotted box <span class='editable-text'>like this</span> is editable. Click to edit. Click outside the box or hit Return/Escape to stop editing. (cn)"}
+      :value "虚线框内为可编辑文字：<span class='editable-text'>示例</span>。点击进行编辑。点击虚线框外任何区域或按回车／退出键退出编辑模式。"}
 
     {:db/id -303
       :localised/locale -100030
-      :value "Text in a dotted box <span class='editable-text'>like this</span> is editable. Click to edit. Click outside the box or hit Return/Escape to stop editing. (fr)"}
+      :value "Texte dans une boîte en pointillés, <span class='editable-text'>comme cela</span> est modifiable. Cliquez pour modifier. Cliquez en dehors de la boîte ou appuyez sur Retour / Echap pour arrêter l'édition."}
 
     {:db/id -300
       :string/ident :app/explain
@@ -280,11 +280,11 @@
 
     {:db/id -312
       :localised/locale -100020
-      :value "Editable localised strings. (cn)"}
+      :value "可编辑本地语言字段"}
 
     {:db/id -313
       :localised/locale -100030
-      :value "Editable localised strings. (fr)"}
+      :value "Chaînes localisées modifiable."}
 
     {:db/id -310
       :string/ident :app/editable-localised-strings
@@ -298,11 +298,11 @@
 
     {:db/id -322
       :localised/locale -100020
-      :value "The same localised strings as above but read only. (cn)"}
+      :value "上方本地语言字段的只读版本。"}
 
     {:db/id -323
       :localised/locale -100030
-      :value "The same localised strings as above but read only. (fr)"}
+      :value "Les mêmes chaînes localisées comme ci-dessus, mais en lecture seule."}
 
     {:db/id -320
       :string/ident :app/read-only-localised-strings
@@ -316,11 +316,11 @@
 
     {:db/id -502
       :localised/locale -100020
-      :value "选择其它语言"}
+      :value "选择其它区域设置"}
 
     {:db/id -503
       :localised/locale -100030
-      :value "Choose a different locale (fr)"}
+      :value "Choisissez un autre paramètre régional"}
 
     {:db/id -500
       :string/ident :locale/choose
@@ -334,11 +334,11 @@
 
     {:db/id -512
       :localised/locale -100020
-      :value "Locales (cn)"}
+      :value "区域设置"}
 
     {:db/id -513
       :localised/locale -100030
-      :value "Locales (fr)"}
+      :value "Les paramètres régionaux"}
 
     {:db/id -510
       :string/ident :locale/locales
@@ -352,11 +352,11 @@
 
     {:db/id -522
       :localised/locale -100020
-      :value "Localised Strings (cn)"}
+      :value "本地语言字段"}
 
     {:db/id -523
       :localised/locale -100030
-      :value "Localised Strings (fr)"}
+      :value "Les chaînes localisées"}
 
     {:db/id -520
       :string/ident :locale/localised-strings
@@ -370,11 +370,11 @@
 
     {:db/id -532
       :localised/locale -100020
-      :value "Add a new locale (cn)"}
+      :value "添加新区域设置"}
 
     {:db/id -533
       :localised/locale -100030
-      :value "Add a new locale (fr)"}
+      :value "Ajoutez un paramètre régional"}
 
     {:db/id -530
       :string/ident :locale/add-new
@@ -388,11 +388,11 @@
 
     {:db/id -542
       :localised/locale -100020
-      :value "Add a new localised string (cn)"}
+      :value "添加新本地语言字段"}
 
     {:db/id -543
       :localised/locale -100030
-      :value "Add a new localised string (fr)"}
+      :value "Ajoutez une chaîne localisée"}
 
     {:db/id -540
       :string/ident :locale/add-new-string
@@ -406,11 +406,11 @@
 
     {:db/id -552
       :localised/locale -100020
-      :value "Localised (cn)"}
+      :value "本地化"}
 
     {:db/id -553
       :localised/locale -100030
-      :value "Localised (fr)"}
+      :value "Localisée"}
 
     {:db/id -550
       :string/ident :locale/localised
@@ -429,7 +429,7 @@
 
     {:db/id -603
       :localised/locale -100030
-      :value "Choose a different language (fr)"}
+      :value "Choisissez une langue différente"}
 
     {:db/id -600
       :string/ident :language/choose
