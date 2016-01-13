@@ -81,7 +81,7 @@
           {:keys [:toggle-checkbox :edited-text :edited-text-id :edited-keyword :localised-locale-create]} (om/get-computed this)]
       ;;(log "LocalesTableRow: render: oprops" oprops)
       (html
-        [:tr {:class css-class}
+        [:tr {:class (str "localised-string " css-class)}
           [:td {:class "center-column"}
             [:input
               { :type "checkbox"
@@ -99,7 +99,8 @@
 (defui LocalesTable
   static om/IQuery
   (query [this]
-    `[:locales])
+    `[:locales
+      {:app.localised/strings [:app/code :app/enum :app/default :app/delete-selected :app/select :locale/locales :locale/add-new :locale/localised]}])
 
   Object
   (initLocalState [this]
@@ -143,26 +144,27 @@
           ;; to make sure the locales for each locale are in a consistent order
           ;; we define the order
           order (mapv #(get-in % [:db/id]) locales)
-          state (om/get-state this)]
+          state (om/get-state this)
+          strings (get-in props [:app.localised/strings])]
       (log "LocalesTable: render: props" props)
       (html
         [:div {:class "functional-block"}
-          [:h2 "Locales"]
+          [:h2 (:locale/locales strings)]
           [:button
             {:on-click (fn [e]
                         (om/transact! this `[(locale/create) :locales]))}
-            "Add a new locale"]
+            (:locale/add-new strings)]
           (when (not-empty locales)
             (html
               [:div
                 [:table
                   [:thead
                     [:tr
-                      [:th {:rowSpan 2} "Select"]
-                      [:th {:rowSpan 2} "Name"]
-                      [:th {:rowSpan 2} "Code"]
-                      [:th {:rowSpan 2} "Enum"]
-                      [:th {:colSpan (count order)} "Localised"]]
+                      [:th {:class "select-column-width" :rowSpan 2} (:app/select strings)]
+                      [:th {:rowSpan 2} (:app/default strings)]
+                      [:th {:rowSpan 2} (:app/code strings)]
+                      [:th {:rowSpan 2} (:app/enum strings)]
+                      [:th {:colSpan (count order)} (:locale/localised strings)]]
                     [:tr
                       (map (fn [l] [:th {:key (get-in l [:db/id])} (get-in l [:locale/code])]) locales)]]
                   [:tbody
@@ -187,6 +189,6 @@
                                       ids (selected-checkbox-ids checkboxes)]
                                   (when-not (empty? ids)
                                     (om/transact! this `[(locale/delete {:ids ~ids}) :locales]))))}
-                  "Delete selected"]]))]))))
+                  (:app/delete-selected strings)]]))]))))
 
 (def locales-table (om/factory LocalesTable))

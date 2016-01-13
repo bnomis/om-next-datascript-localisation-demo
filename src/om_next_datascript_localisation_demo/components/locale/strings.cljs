@@ -68,7 +68,7 @@
           {:keys [:toggle-checkbox :edited-text :edited-text-id :edited-keyword :localised-create]} (om/get-computed this)]
       ;;(log "LocalisedStringTableRow: render: props" props)
       (html
-        [:tr {:class css-class}
+        [:tr {:class (str "localised-string " css-class)}
           [:td {:class "center-column"}
             [:input
               { :type "checkbox"
@@ -81,29 +81,40 @@
 
 (def localised-string (om/factory LocalisedStringTableRow {:keyfn (fn [props] (get-in props [:localised-string :db/id]))}))
 
+(defn table-columns [locales]
+  (if (not-empty locales)
+    (html
+      [:colgroup
+        [:col {:class "select-column-width"}]
+        [:col {:class "localised-string-column-width" :span (+ 2 (count locales))}]])
+    (html
+      [:colgroup
+        [:col {:class "select-column-width"}]
+        [:col {:class "localised-string-column-width" :span 2}]])))
 
-(defn table-head [locales]
+(defn table-head [locales strings]
   (if (not-empty locales)
     (html
       [:thead
         [:tr
-          [:th {:rowSpan 2} "Select"]
-          [:th {:rowSpan 2} "ID"]
-          [:th {:rowSpan 2} "Default"]
-          [:th {:colSpan (count locales)} "Localised"]]
+          [:th {:rowSpan 2} (:app/select strings)]
+          [:th {:rowSpan 2} (:app/id strings)]
+          [:th {:rowSpan 2} (:app/default strings)]
+          [:th {:colSpan (count locales)} (:locale/localised strings)]]
         [:tr
           (map (fn [l] [:th {:key (get-in l [:db/id])} (get-in l [:locale/code])]) locales)]])
     (html
       [:thead
         [:tr
-          [:th "Select"]
-          [:th "ID"]
-          [:th "Default"]]])))
+          [:th (:app/select strings)]
+          [:th (:app/id strings)]
+          [:th (:app/default strings)]]])))
 
 (defui LocalisedStringTable
   static om/IQuery
   (query [this]
-    `[:locales :localised-strings])
+    `[:locales :localised-strings
+      {:app.localised/strings [:app/delete-selected :app/select :app/id :app/default :locale/localised-strings :locale/add-new-string :locale/localised]}])
 
   Object
   (initLocalState [this]
@@ -149,20 +160,22 @@
           ;; to make sure locales are in a consistent order
           ;; we pass the order of display to the row
           order (mapv #(get-in % [:db/id]) locales)
-          state (om/get-state this)]
+          state (om/get-state this)
+          strings (get-in props [:app.localised/strings])]
       ;;(log "LocalisedStringTable: render: props" props)
       (html
         [:div {:class "functional-block"}
-          [:h2 "Localised Strings"]
+          [:h2 (:locale/localised-strings strings)]
           [:button
             {:on-click (fn [e]
                         (om/transact! this `[(localised-string/create) :localised-strings]))}
-            "Add a new localised string"]
+            (:locale/add-new-string strings)]
           (when (not-empty localised-strings)
             (html
               [:div
                 [:table
-                  (table-head locales)
+                  (table-columns locales)
+                  (table-head locales strings)
                   ;; body
                   [:tbody
                     (map (fn [l css-class]
@@ -186,6 +199,6 @@
                                     ids (selected-checkbox-ids checkboxes)]
                                 (when-not (empty? ids)
                                   (om/transact! this `[(delete/db-id {:ids ~ids}) :localised-strings]))))}
-                  "Delete selected"]]))]))))
+                  (:app/delete-selected strings)]]))]))))
 
 (def localised-string-table (om/factory LocalisedStringTable))

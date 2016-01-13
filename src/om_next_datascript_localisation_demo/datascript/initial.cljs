@@ -94,40 +94,149 @@
       :localised [-201 -202 -203]}
 
     ;; app description string
-    {:db/id -301
+    {:db/id -211
       :localised/locale -100010
       :value "App description (en)"}
 
-    {:db/id -302
+    {:db/id -212
       :localised/locale -100020
       :value "App description (cn)"}
 
-    {:db/id -303
+    {:db/id -213
       :localised/locale -100030
       :value "App description (fr)"}
 
-    {:db/id -300
+    {:db/id -210
       :string/ident :app/desc
       :value "App Description"
-      :localised [-301 -302 -303]}
+      :localised [-211 -212 -213]}
 
     ;; current app locale current string
-    {:db/id -401
+    {:db/id -221
       :localised/locale -100010
       :value "The current app locale is"}
 
-    {:db/id -402
+    {:db/id -222
       :localised/locale -100020
       :value "现用语言为"}
 
-    {:db/id -403
+    {:db/id -223
       :localised/locale -100030
       :value "The current app locale is (fr)"}
 
-    {:db/id -400
+    {:db/id -220
       :string/ident :app/current-locale
       :value "The current app locale is"
-      :localised [-401 -402 -403]}
+      :localised [-221 -222 -223]}
+
+    ;; delete selected
+    {:db/id -231
+      :localised/locale -100010
+      :value "Delete selected"}
+
+    {:db/id -232
+      :localised/locale -100020
+      :value "Delete selected (cn)"}
+
+    {:db/id -233
+      :localised/locale -100030
+      :value "Delete selected (fr)"}
+
+    {:db/id -230
+      :string/ident :app/delete-selected
+      :value "Delete selected"
+      :localised [-231 -232 -233]}
+
+    ;; select
+    {:db/id -241
+      :localised/locale -100010
+      :value "Select"}
+
+    {:db/id -242
+      :localised/locale -100020
+      :value "Select (cn)"}
+
+    {:db/id -243
+      :localised/locale -100030
+      :value "Select (fr)"}
+
+    {:db/id -240
+      :string/ident :app/select
+      :value "Select"
+      :localised [-241 -242 -243]}
+
+    ;; ID
+    {:db/id -251
+      :localised/locale -100010
+      :value "ID"}
+
+    {:db/id -252
+      :localised/locale -100020
+      :value "ID (cn)"}
+
+    {:db/id -253
+      :localised/locale -100030
+      :value "ID (fr)"}
+
+    {:db/id -250
+      :string/ident :app/id
+      :value "ID"
+      :localised [-251 -252 -253]}
+
+    ;; default
+    {:db/id -261
+      :localised/locale -100010
+      :value "Default"}
+
+    {:db/id -262
+      :localised/locale -100020
+      :value "Default (cn)"}
+
+    {:db/id -263
+      :localised/locale -100030
+      :value "Default (fr)"}
+
+    {:db/id -260
+      :string/ident :app/default
+      :value "Default"
+      :localised [-261 -262 -263]}
+
+    ;; code
+    {:db/id -271
+      :localised/locale -100010
+      :value "Code"}
+
+    {:db/id -272
+      :localised/locale -100020
+      :value "Code (cn)"}
+
+    {:db/id -273
+      :localised/locale -100030
+      :value "Code (fr)"}
+
+    {:db/id -270
+      :string/ident :app/code
+      :value "Code"
+      :localised [-271 -272 -273]}
+
+    ;; enum
+    {:db/id -281
+      :localised/locale -100010
+      :value "Enum"}
+
+    {:db/id -282
+      :localised/locale -100020
+      :value "Enum (cn)"}
+
+    {:db/id -283
+      :localised/locale -100030
+      :value "Enum (fr)"}
+
+    {:db/id -280
+      :string/ident :app/enum
+      :value "Enum"
+      :localised [-281 -282 -283]}
+
 
     ;; choose locale string
     {:db/id -501
@@ -147,62 +256,153 @@
       :value "Choose a different locale"
       :localised [-501 -502 -503]}
 
-    ;; choose language string
+    ;; locales
     {:db/id -511
       :localised/locale -100010
-      :value "Choose a different language"}
+      :value "Locales"}
 
     {:db/id -512
       :localised/locale -100020
-      :value "选择其它语言"}
+      :value "Locales (cn)"}
 
     {:db/id -513
       :localised/locale -100030
-      :value "Choose a different language (fr)"}
+      :value "Locales (fr)"}
 
     {:db/id -510
+      :string/ident :locale/locales
+      :value "Locales"
+      :localised [-511 -512 -513]}
+
+    ;; localised strings
+    {:db/id -521
+      :localised/locale -100010
+      :value "Localised Strings"}
+
+    {:db/id -522
+      :localised/locale -100020
+      :value "Localised Strings (cn)"}
+
+    {:db/id -523
+      :localised/locale -100030
+      :value "Localised Strings (fr)"}
+
+    {:db/id -520
+      :string/ident :locale/localised-strings
+      :value "Localised Strings"
+      :localised [-521 -522 -523]}
+
+    ;; Add a new locale
+    {:db/id -531
+      :localised/locale -100010
+      :value "Add a new locale"}
+
+    {:db/id -532
+      :localised/locale -100020
+      :value "Add a new locale (cn)"}
+
+    {:db/id -533
+      :localised/locale -100030
+      :value "Add a new locale (fr)"}
+
+    {:db/id -530
+      :string/ident :locale/add-new
+      :value "Add a new locale"
+      :localised [-531 -532 -533]}
+
+    ;; Add a new localised string
+    {:db/id -541
+      :localised/locale -100010
+      :value "Add a new localised string"}
+
+    {:db/id -542
+      :localised/locale -100020
+      :value "Add a new localised string (cn)"}
+
+    {:db/id -543
+      :localised/locale -100030
+      :value "Add a new localised string (fr)"}
+
+    {:db/id -540
+      :string/ident :locale/add-new-string
+      :value "Add a new localised string"
+      :localised [-541 -542 -543]}
+
+    ;; localised
+    {:db/id -551
+      :localised/locale -100010
+      :value "Localised"}
+
+    {:db/id -552
+      :localised/locale -100020
+      :value "Localised (cn)"}
+
+    {:db/id -553
+      :localised/locale -100030
+      :value "Localised (fr)"}
+
+    {:db/id -550
+      :string/ident :locale/localised
+      :value "Localised"
+      :localised [-551 -552 -553]}
+
+
+    ;; choose language string
+    {:db/id -601
+      :localised/locale -100010
+      :value "Choose a different language"}
+
+    {:db/id -602
+      :localised/locale -100020
+      :value "选择其它语言"}
+
+    {:db/id -603
+      :localised/locale -100030
+      :value "Choose a different language (fr)"}
+
+    {:db/id -600
       :string/ident :language/choose
       :value "Choose a different language"
-      :localised [-511 -512 -513]}
+      :localised [-601 -602 -603]}
 
 
     ;; dates
 
     ;; date format string
-    {:db/id -601
-      :localised/locale -100010
-      :value "{day}, {date} {month} {year}"}
-
-    {:db/id -602
-      :localised/locale -100020
-      :value "{year}年{month}月{date}日，{day}"}
-
-    {:db/id -603
-      :localised/locale -100030
-      :value "{day}, {date} {month} {year}"}
-
-    {:db/id -600
-      :string/ident :date/format
-      :value "{day}, {date} {month} {year}"
-      :localised [-601 -602 -603]}
-
-    ;; date today
     {:db/id -701
       :localised/locale -100010
-      :value "Today's date is"}
+      :value "{day}, {date} {month} {year}"}
 
     {:db/id -702
       :localised/locale -100020
-      :value "今天的日期是"}
+      :value "{year}年{month}月{date}日，{day}"}
 
     {:db/id -703
       :localised/locale -100030
-      :value "La date de aujourd'hui est"}
+      :value "{day}, {date} {month} {year}"}
 
     {:db/id -700
+      :string/ident :date/format
+      :value "{day}, {date} {month} {year}"
+      :localised [-701 -702 -703]}
+
+    ;; date today
+    {:db/id -711
+      :localised/locale -100010
+      :value "Today's date is"}
+
+    {:db/id -712
+      :localised/locale -100020
+      :value "今天的日期是"}
+
+    {:db/id -713
+      :localised/locale -100030
+      :value "La date de aujourd'hui est"}
+
+    {:db/id -710
       :string/ident :date/today
       :value "Today's date is"
-      :localised [-701 -702 -703]}
+      :localised [-711 -712 -713]}
 
 
     ;; days

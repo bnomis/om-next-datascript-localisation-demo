@@ -25,6 +25,10 @@ time, mark, audio, video {
   font-size: 100%;
   font: inherit;
   vertical-align: baseline;
+
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
 }
 
 /* HTML5 display-role reset for older browsers */
@@ -214,6 +218,12 @@ hr {
 
 /* tables */
 
+table{
+  -webkit-table-layout: fixed;
+  table-layout: fixed;
+  width: auto;
+}
+
 table thead th{
   text-align: left;
   font-weight: bold;
@@ -263,4 +273,17 @@ div.functional-block{
 
 .editable-text input{
   width: 100%;
+}
+
+.localised-string-column-width{
+  width: 200px;
+}
+
+.select-column-width{
+  width: 40px;
+}
+
+tr.localised-string td{
+  padding-top: 8px;
+  padding-bottom: 8px;
 }
