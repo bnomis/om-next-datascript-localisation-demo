@@ -27,7 +27,7 @@
       (js/clearInterval timer))
     (let [things (:things new-props)
           length (count things)]
-      (if (> length 0)
+      (if (> length 1)
         (om/set-state! this {:current-index 0 :timer (make-timer this)})
         (om/set-state! this {:current-index 0 :timer 0}))))
 
