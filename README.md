@@ -4,6 +4,18 @@ https://bnomis.github.io/om-next-datascript-localisation-demo/
 
 Demo of localisation with [Om Next][om] and [DataScript][ds].
 
+## Video
+
+YouTube
+
+## Blog Post
+
+http://simonb.com/
+
+### Hire Me
+
+*ps:* I'm available for hire remotely or in Shanghai. Thanks.
+
 ## About
 
 [Om Next][om] is a [ClojureScript][cljs] wrapper around [React][react].
@@ -15,11 +27,6 @@ This project uses:
 * [Leiningen][lein] for building and running tests
 * [Figwheel][fig] for interactive development
 * [doo][doo] to provide a JavaScript environment for non-ui testing
-
-### Hire Me
-
-*ps:* I'm available for hire remotely or in Shanghai. Thanks.
-
 
 ## Running
 
