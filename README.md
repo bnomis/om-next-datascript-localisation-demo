@@ -4,13 +4,9 @@ https://bnomis.github.io/om-next-datascript-localisation-demo/
 
 Demo of localisation with [Om Next][om] and [DataScript][ds].
 
-## Video
+There's a video demo here: https://youtu.be/-E2Z9bca4-w
 
-YouTube
-
-## Blog Post
-
-http://simonb.com/
+A blog post about this project is here: http://www.simonb.com/blog/2016/01/24/om-next-datascript-localisation-demo/
 
 ### Hire Me
 
