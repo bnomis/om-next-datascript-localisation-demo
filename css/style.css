@@ -256,6 +256,16 @@ td.center-column{
 
 /* site specific stuff below */
 
+
+div#noscript{
+  width: 1200px;
+  margin-right: auto;
+  margin-left: auto;
+  background-color: #fef68d;
+  padding: 5px;
+  margin-top: 5px;
+}
+
 #container {
   width: 1200px;
   margin-right: auto;
