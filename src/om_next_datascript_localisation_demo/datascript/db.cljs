@@ -269,12 +269,12 @@
 
 (defn read-localised-string
   [db query]
-    (let [string-id (first query)
-          eid (string-id->eid db string-id)
-          query (rest query)
-          query (if (not-empty query) query '[*])]
-      (when eid
-        (db-pull db eid query))))
+  (let [string-id (first query)
+        eid (string-id->eid db string-id)
+        query (rest query)
+        query (if (not-empty query) query '[*])]
+    (when eid
+      (db-pull db eid query))))
 
 ;; dates
 
