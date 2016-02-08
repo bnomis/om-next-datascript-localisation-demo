@@ -53,26 +53,45 @@
 (defn filter-locales [locales app-locale]
   (remove (fn [l] (= app-locale (:db/id l))) locales))
 
+(defn find-locale [locales id]
+  (loop [l (first locales)
+          locales (rest locales)]
+    (if-not l
+      nil
+      (if (= (:db/id l) id)
+        l
+        (recur (first locales) (rest locales))))))
+
+(defn sort-locales [locales order]
+  (loop [out []
+          id (first order)
+          order (rest order)]
+    (if-not id
+      out
+      (recur (conj out (find-locale locales id)) (first order) (rest order)))))
+
 (defui LocalesSelector
   static om/IQuery
   (query [this]
     `[{:app.locale [:db/id]}
       {:app.localised/strings [:language/choose]}
       {:localised-string [:language/choose]}
-      :locales])
+      :locales
+      :locale/order])
 
   Object
   (render [this]
     (let [props (om/props this)
           locales (get-in props [:locales])
-          locales (sort-by :db/id locales)
+          locale-order (get-in props [:locale/order])
+          locales (sort-locales locales locale-order)
           app-locale (get-in props [:app.locale :db/id])
           locales (filter-locales locales app-locale)
           strings (get-in props [:app.localised/strings])
           choose (map :value (get-in props [:localised-string :localised]))]
       (log "LocaleSelector: render: props:" props)
       (log "LocaleSelector: render: choose:" choose)
-      (when (seq locales)
+      (when (seq locales3)
         (html
           [:div
             (looper {:things choose})

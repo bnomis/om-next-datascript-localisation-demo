@@ -10,7 +10,7 @@
               app-localise-query-for-id localise app-locale-tx-after-deleting-locales
               unique-locale-code unique-localised-string-ident the-db
               read-default locale-refs read-locale read-localised-string read-localised-strings
-              localise-string-with-query make-edited-string-tx]]
+              localise-string-with-query make-edited-string-tx locale-order]]
     [om-next-datascript-localisation-demo.utils.ident :refer [ident->string-id-and-locale]]))
 
 ;;(enable-console-print!)
@@ -48,6 +48,14 @@
     (if eid
       {:value (db-pull db eid query)}
       {:value :not-found})))
+
+
+(defmethod read :locale/order
+  [env key params]
+  (log "--- read locale/order")
+  (log-params env key params)
+  {:value (locale-order (:state env))})
+
 
 (defmethod read :locales-via-refs
   [env key params]

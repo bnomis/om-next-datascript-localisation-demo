@@ -16,3 +16,11 @@
 (defn ident->string-id-and-locale [ident]
   (let [[string-id locale-id] (str/split ident #"=")]
     [(keywordify string-id) (int locale-id)]))
+
+(defn str-list-to-idents [s]
+  (let [ints (str/split s #",")]
+    (map #(js/parseInt %) ints)))
+
+(defn idents-to-str-list [ints]
+  (let [ss (map #(.toString %) ints)]
+    (str/join "," ss)))

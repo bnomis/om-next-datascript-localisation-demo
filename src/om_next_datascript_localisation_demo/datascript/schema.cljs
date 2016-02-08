@@ -32,6 +32,10 @@
       :db/unique :db.unique/identity
       :db/doc "Locale ident"}
 
+    ;; locale order
+    :locale/order
+    {:db/doc "Locale order"}
+
     ;;
     ;; Localised values
     ;;

@@ -2,7 +2,7 @@
 
 ;; change this def to true/false to turn logging on/off
 ;; when off, all logging is removed from code
-(def logging-is-on false)
+(def logging-is-on true)
 
 (defmacro log [& args]
   `(when logging-is-on

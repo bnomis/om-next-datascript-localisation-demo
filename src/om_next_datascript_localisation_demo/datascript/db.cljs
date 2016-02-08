@@ -6,6 +6,7 @@
     [om-next-datascript-localisation-demo.datascript.schema :refer [schema]]
     [om-next-datascript-localisation-demo.datascript.initial :refer [initial-data]]
     [om-next-datascript-localisation-demo.logging :refer-macros [log log-read log-mutate]]
+    [om-next-datascript-localisation-demo.utils.ident :refer [str-list-to-idents idents-to-str-list]]
     [clojure.set :refer [difference]]
     [clojure.string :as str]))
 
@@ -275,6 +276,26 @@
         query (if (not-empty query) query '[*])]
     (when eid
       (db-pull db eid query))))
+
+
+(defn read-locale-order [db]
+  (if-let [lo (d/q '[:find ?order .
+                      :where
+                      [_ :locale/order ?order]] @db)]
+    (str-list-to-idents lo)))
+
+(defn make-locale-order [db]
+  (if-let [lids (locale-ids db)]
+    (let [tx [{:db/id -1
+                :locale/order (idents-to-str-list lids)}]]
+      (d/transact! db tx)
+      lids)))
+
+(defn locale-order [db]
+  (if-let [lo (read-locale-order db)]
+    lo
+    (make-locale-order db)))
+
 
 ;; dates
 
