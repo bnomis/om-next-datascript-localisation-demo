@@ -77,21 +77,22 @@
       {:app.localised/strings [:language/choose]}
       {:localised-string [:language/choose]}
       :locales
-      :locale/order])
+      :locales/order])
 
   Object
   (render [this]
     (let [props (om/props this)
           locales (get-in props [:locales])
-          locale-order (get-in props [:locale/order])
-          locales (sort-locales locales locale-order)
+          locales-order (get-in props [:locales/order])
+          locales (sort-locales locales locales-order)
           app-locale (get-in props [:app.locale :db/id])
           locales (filter-locales locales app-locale)
           strings (get-in props [:app.localised/strings])
           choose (map :value (get-in props [:localised-string :localised]))]
       (log "LocaleSelector: render: props:" props)
+      (log "LocaleSelector: render: locales-order:" locales-order)
       (log "LocaleSelector: render: choose:" choose)
-      (when (seq locales3)
+      (when (seq locales)
         (html
           [:div
             (looper {:things choose})

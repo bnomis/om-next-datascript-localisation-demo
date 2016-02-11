@@ -7,7 +7,7 @@
     [om-next-datascript-localisation-demo.datascript.initial :refer [initial-data]]
     [om-next-datascript-localisation-demo.logging :refer-macros [log log-read log-mutate]]
     [om-next-datascript-localisation-demo.utils.ident :refer [str-list-to-idents idents-to-str-list]]
-    [clojure.set :refer [difference]]
+    [clojure.set :refer [difference superset?]]
     [clojure.string :as str]))
 
 (defn init-db []
@@ -277,26 +277,6 @@
     (when eid
       (db-pull db eid query))))
 
-
-(defn read-locale-order [db]
-  (if-let [lo (d/q '[:find ?order .
-                      :where
-                      [_ :locale/order ?order]] @db)]
-    (str-list-to-idents lo)))
-
-(defn make-locale-order [db]
-  (if-let [lids (locale-ids db)]
-    (let [tx [{:db/id -1
-                :locale/order (idents-to-str-list lids)}]]
-      (d/transact! db tx)
-      lids)))
-
-(defn locale-order [db]
-  (if-let [lo (read-locale-order db)]
-    lo
-    (make-locale-order db)))
-
-
 ;; dates
 
 ;; days
@@ -396,13 +376,19 @@
 
 
 
-(defn locale-code
+(defn locale-id->code
   [db id]
-  (first
-    (d/q '[:find [?code ...]
-            :in $ ?id
-            :where
-              [?id :locale/code ?code]] @db id)))
+  (d/q '[:find ?code .
+          :in $ ?id
+          :where
+          [?id :locale/code ?code]] @db id))
+
+(defn locale-code->id
+  [db code]
+  (d/q '[:find ?id .
+          :in $ ?code
+          :where
+          [?id :locale/code ?code]] @db code))
 
 
 (defn put-db-id-in-query
@@ -467,17 +453,6 @@
         (recur (first query) (rest query) (assoc results k val))))))
 
 
-(defn id-in-list [list id]
-  (some #(= id %) list))
-
-(defn app-locale-tx-after-deleting-locales [db ids]
-  (let [alid (app-locale-id db)]
-    (when (id-in-list ids alid)
-      (let [locale-ids (locale-ids db)
-            diff (difference (set locale-ids) (set ids))
-            new-id (first diff)]
-        (when new-id
-          {:db/id (app-locale-entity db) :app/locale new-id})))))
 
 
 (defn locale-code-is-unique
@@ -521,3 +496,73 @@
     (if (localised-string-ident-is-unique db ident)
       ident
       (recur (keyword (random-string 6))))))
+
+
+(defn locales-order-entity [db]
+  (d/q '[:find ?e .
+          :where
+          [?e :locales/order]] @db))
+
+(defn read-locales-order [db]
+  (if-let [lo (d/q '[:find ?order .
+                      :where
+                      [_ :locales/order ?order]] @db)]
+    (str-list-to-idents lo)))
+
+(defn write-locales-order [db lids]
+  (let [tx [{:db/id (locales-order-entity db)
+              :locales/order (idents-to-str-list lids)}]]
+    (d/transact! db tx)))
+
+(defn make-locales-order [db]
+  (if-let [lids (locale-ids db)]
+    (let [tx [{:db/id -1
+                :locales/order (idents-to-str-list lids)}]]
+      (d/transact! db tx)
+      lids)))
+
+(defn add-locale-id-to-order [db id]
+  (write-locales-order db (conj (vec (read-locales-order db)) id)))
+
+(defn locales-order [db]
+  (if-let [lo (read-locales-order db)]
+    lo
+    (make-locales-order db)))
+
+(defn locale-create [db]
+  (let [code (unique-locale-code db)
+        tx [{ :db/id -1
+              :locale/code code
+              :locale/ident (keyword "locale" code)
+              :value "Edit me"}]
+        rv (d/transact! db tx)
+        id (locale-code->id db code)]
+    (add-locale-id-to-order db id)))
+
+(defn id-in-list [list id]
+  (some #(= id %) list))
+
+(defn app-locale-tx-after-deleting-locales [db ids]
+  (let [alid (app-locale-id db)]
+    (when (id-in-list ids alid)
+      (let [locale-ids (locale-ids db)
+            diff (difference (set locale-ids) (set ids))
+            new-id (first diff)]
+        (when new-id
+          {:db/id (app-locale-entity db) :app/locale new-id})))))
+
+(defn locale-order-tx-after-deleting-locales [db ids]
+  (let [locale-ids (locale-ids db)]
+    (if-let [diff (difference (set locale-ids) (set ids))]
+      (let [lo (filterv (fn [i] (superset? diff #{i})) (read-locales-order db))]
+        {:db/id (locales-order-entity db) :locales/order (idents-to-str-list lo)})
+      {:db/id (locales-order-entity db) :locales/order ""})))
+
+
+(defn locale-delete [db ids]
+  (let [tx (mapv (fn [id] [:db.fn/retractEntity id]) ids)
+        new-locale-order (locale-order-tx-after-deleting-locales db ids)
+        ;; if deleting the current app-locale switch to a new one
+        new-app-locale (app-locale-tx-after-deleting-locales db ids)
+        tx (conj tx new-locale-order new-app-locale)]
+    (d/transact! db tx)))

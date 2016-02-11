@@ -11,7 +11,7 @@
 (defmacro log-env [env]
   `(when logging-is-on
     (log "- env contains:" (keys ~env))
-    (doseq [k# [:path :pathopt :ref :ast :component :shared :target :query :query/root]]
+    (doseq [k# [:path :pathopt :ref :ast :component :shared :target :query :query-root]]
       (if (contains? ~env k#)
         (log "- " (str k#) (k# ~env))))))
 

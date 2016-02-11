@@ -10,7 +10,7 @@
               app-localise-query-for-id localise app-locale-tx-after-deleting-locales
               unique-locale-code unique-localised-string-ident the-db
               read-default locale-refs read-locale read-localised-string read-localised-strings
-              localise-string-with-query make-edited-string-tx locale-order]]
+              localise-string-with-query make-edited-string-tx locales-order locale-create locale-delete]]
     [om-next-datascript-localisation-demo.utils.ident :refer [ident->string-id-and-locale]]))
 
 ;;(enable-console-print!)
@@ -50,11 +50,11 @@
       {:value :not-found})))
 
 
-(defmethod read :locale/order
+(defmethod read :locales/order
   [env key params]
-  (log "--- read locale/order")
+  (log "--- read locales/order")
   (log-params env key params)
-  {:value (locale-order (:state env))})
+  {:value (locales-order (:state env))})
 
 
 (defmethod read :locales-via-refs
@@ -199,28 +199,18 @@
   [env key params]
   (log "=== mutate locale/create")
   (log-mutate env key params)
-  (let [db (:state env)
-        code (unique-locale-code db)
-        tx [{:db/id -1
-              :locale/code code
-              :locale/ident (keyword "locale" code)
-              :value "Edit me"}]]
-    (log "mutate locale/create tx:" tx)
-    { :value {:keys [:locales]}
-      :action (fn [] (d/transact! db tx))}))
+  (let [db (:state env)]
+    { :value {:keys [:locales :locales/order]}
+      :action (fn [] (locale-create db))}))
 
 (defmethod mutate 'locale/delete
   [env key params]
   {:pre [(:ids params)]}
   (log "=== mutate locale/delete")
   (log-mutate env key params)
-  (let [db (:state env)
-        ids (:ids params)
-        tx (mapv (fn [id] [:db.fn/retractEntity id]) ids)
-        ;; if deleting the current app-locale switch to a new one
-        new-locale (app-locale-tx-after-deleting-locales db ids)]
-    { :action (fn [] (d/transact! db (conj tx new-locale)))}))
-
+  (let [db (:state env)]
+    { :value {:keys [:locales :app.locale :locales/order]}
+      :action (fn [] (locale-delete db (:ids params)))}))
 
 (defmethod mutate 'localised-string/create
   [env key params]

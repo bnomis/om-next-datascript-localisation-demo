@@ -1,4 +1,4 @@
-(defproject om-next-datascript-localisation-demo "0.1.0-SNAPSHOT"
+(defproject om-next-datascript-localisation-demo "0.2.0-SNAPSHOT"
   :description "Demo of Om Next and DataScript Localisation"
   :url "https://github.com/bnomis/om-next-datascript-localisation-demo"
   :license {:name "MIT"
@@ -9,10 +9,9 @@
                   [org.clojure/core.async "0.2.374"]
                   [org.omcljs/om "1.0.0-alpha30"]
                   [datascript "0.15.0"]
-                  [sablono "0.5.3"]
+                  [sablono "0.6.0"]
                   [cljsjs/react "0.14.3-0"]
                   [cljsjs/react-dom "0.14.3-1"]
-                  [cljsjs/react-dom-server "0.14.3-0"]
                   [doo "0.1.6"]]
 
   :plugins [[lein-cljsbuild "1.1.2"]

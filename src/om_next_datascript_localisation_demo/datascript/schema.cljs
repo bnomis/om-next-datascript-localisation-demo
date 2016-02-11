@@ -33,8 +33,8 @@
       :db/doc "Locale ident"}
 
     ;; locale order
-    :locale/order
-    {:db/doc "Locale order"}
+    :locales/order
+    {:db/doc "Locales order"}
 
     ;;
     ;; Localised values

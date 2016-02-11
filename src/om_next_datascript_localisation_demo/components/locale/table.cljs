@@ -152,7 +152,7 @@
           [:h2 (:locale/locales strings)]
           [:button
             {:on-click (fn [e]
-                        (om/transact! this `[(locale/create) :locales]))}
+                        (om/transact! this `[(locale/create) :locales :locales/order]))}
             (:locale/add-new strings)]
           (when (not-empty locales)
             (html
@@ -188,7 +188,7 @@
                                       checkboxes (:checkboxes state)
                                       ids (selected-checkbox-ids checkboxes)]
                                   (when-not (empty? ids)
-                                    (om/transact! this `[(locale/delete {:ids ~ids}) :locales]))))}
+                                    (om/transact! this `[(locale/delete {:ids ~ids}) :locales :locales/order]))))}
                   (:app/delete-selected strings)]]))]))))
 
 (def locales-table (om/factory LocalesTable))
